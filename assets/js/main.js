@@ -21,3 +21,8 @@ document.addEventListener('DOMContentLoaded', () => {
     observer.observe(el);
   });
 });
+
+function scrollProjects(direction) {
+  const grid = document.getElementById('projectsGrid');
+  grid.scrollBy({ left: direction * 320, behavior: 'smooth' });
+}
