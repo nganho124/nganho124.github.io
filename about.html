@@ -4,12 +4,12 @@
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>About · Ngan Ho</title>
-  <link rel="icon" type="image/x-icon" href="images/favicon.ico">
+  <link rel="icon" type="image/x-icon" href="/favicon.ico"/>
   <link rel="stylesheet" href="/assets/css/style.css"/>
 </head>
 <body>
 <nav>
-  <a href="/" class="nav-logo">nganho124</a>
+  <a href="/" class="nav-logo">Ngan Ho <sup>Portfolio</sup></a>
   <ul class="nav-links">
     <li><a href="/">Home</a></li>
     <li><a href="/about.html" class="active">About</a></li>
@@ -17,59 +17,103 @@
     <li><a href="/resume.html">Resume</a></li>
     <li><a href="/blog/">Blog</a></li>
   </ul>
+  <div class="lang-toggle">
+    <a href="/about.html" class="active">EN</a>
+    <span>/</span>
+    <a href="/de/about.html">DE</a>
+  </div>
 </nav>
 
 <main class="container">
   <div class="page-hero">
-    <p class="section-label">About Me</p>
-    <h1>The person behind<br><em>the data.</em></h1>
+    <div class="hero-kicker">
+      <div class="hero-kicker-line"></div>
+      <p class="hero-eyebrow">About Me</p>
+    </div>
+    <h1>The person behind<br><span class="serif-part">the data.</span></h1>
   </div>
 
   <section>
     <div class="about-grid">
+
+      <!-- SIDEBAR -->
       <div class="about-sidebar">
         <div class="avatar">👤</div>
-        <p class="section-label" style="margin-bottom:0.5rem">Tools & Skills</p>
+
+        <p class="section-label">Technical Skills</p>
         <div class="skills-list">
           <span class="tool-badge">Python</span>
           <span class="tool-badge">SQL</span>
+          <span class="tool-badge">R</span>
+          <span class="tool-badge">Streamlit</span>
           <span class="tool-badge">Power BI</span>
-          <span class="tool-badge">Tableau</span>
-          <span class="tool-badge">dbt</span>
-          <span class="tool-badge">Airflow</span>
           <span class="tool-badge">Pandas</span>
-          <span class="tool-badge">scikit-learn</span>
+          <span class="tool-badge">Supabase</span>
+          <span class="tool-badge">TypeScript</span>
+          <span class="tool-badge">SAP S/4 HANA</span>
           <span class="tool-badge">Git</span>
-          <span class="tool-badge">PostgreSQL</span>
+        </div>
+
+        <p class="section-label" style="margin-top:2rem">Languages</p>
+        <div class="skills-list">
+          <span class="tool-badge">Vietnamese — Native</span>
+          <span class="tool-badge">English — C1</span>
+          <span class="tool-badge">German — A2</span>
+        </div>
+
+        <p class="section-label" style="margin-top:2rem">Currently</p>
+        <div class="sidebar-card" style="margin-top:0.5rem">
+          <div class="sidebar-card-val">Open to working student roles</div>
+          <div class="sidebar-card-sub">Data Analytics · Digital Product</div>
+        </div>
+        <div class="sidebar-card" style="margin-top:0.75rem">
+          <div class="sidebar-card-label">Location</div>
+          <div class="sidebar-card-val">Nuremberg - Erlangen</div>
+          <div class="sidebar-card-sub">Germany</div>
         </div>
       </div>
-      <div class="about-content">
-        <p style="font-size:1.15rem; margin-bottom:2rem; line-height:1.9;">
-          I'm a Master's student in Information Systems, specialising in data-driven and digital solution development. I'm drawn to the space where messy real-world data meets decisions that actually matter for a business.
+
+      <!-- MAIN CONTENT -->
+      <div>
+ 
+        <p style="font-family:'Playfair Display',serif; font-style:italic; font-size:1.2rem; line-height:1.85; margin-bottom:1.75rem; color:#1c1c1a;">
+          I started in consulting because I wanted to solve real problems. Four years later, I'm still doing that — just with better tools and a deeper understanding of what the data is actually saying.
         </p>
-        <p style="color:var(--muted); margin-bottom:1.5rem;">
-          <!-- Replace this with your real story -->
-          My journey into data started with [your background here]. What keeps me going is the feeling of turning a confusing dataset into a clear answer someone can act on.
+ 
+        <p style="color:var(--muted); margin-bottom:1.25rem; font-size:0.95rem; line-height:1.9;">
+          At CEL Consulting, I worked across supply chain networks in Australia, Europe, and Southeast Asia. The work was always the same at its core: take messy operational data, make sense of it, and turn it into a recommendation someone could actually act on. I've built dashboards, financial models, and simulation tools — and I've sat in the room when those outputs shaped million-dollar decisions.
         </p>
-        <p style="color:var(--muted); margin-bottom:2.5rem;">
-          Outside of work and study, I write on this site — categorised using Python data types, because even my blog needs a schema.
+ 
+        <p style="color:var(--muted); margin-bottom:2.5rem; font-size:0.95rem; line-height:1.9;">
+          Now I'm pursuing my MSc in Information Systems at FAU and working as a Student Assistant at HWR Berlin's Digital Supply Chain Lab, where I build simulation tools in Python and real-time dashboards in TypeScript. The domain has shifted — the drive to understand what the data is saying hasn't.
         </p>
+ 
+        <!-- WHAT MAKES ME DIFFERENT -->
+        <div style="border-left: 2px solid var(--accent); padding-left: 1.25rem; margin-bottom: 2.5rem;">
+          <p style="font-size:0.875rem; color:var(--muted); line-height:1.9;">
+            Most data students have projects. I have outcomes — 9.7M AUD saved through network consolidation, 3.7M EUR recovered from unprofitable SKUs, dashboards that replaced week-long reporting cycles. I write about this work, and what I'm learning, at
+            <a href="/" style="color:var(--accent); text-decoration:none;">todayonepercent.com</a>.
+          </p>
+        </div>
+
         <div class="cta-group">
           <a href="/projects/" class="btn btn-primary">See My Work →</a>
           <a href="/resume.html" class="btn btn-outline">View Resume</a>
         </div>
       </div>
+
     </div>
   </section>
 </main>
 
 <footer>
-  <p>
-    <a href="https://github.com/nganho124" target="_blank">GitHub</a> &nbsp;·&nbsp;
-    <a href="https://linkedin.com" target="_blank">LinkedIn</a> &nbsp;·&nbsp;
-    <a href="mailto:your@email.com">Email</a>
-  </p>
-  <p style="margin-top:0.75rem">© 2025 Ngan Ho · todayonepercent.com</p>
+  <div class="footer-logo">Ngan Ho</div>
+  <div class="footer-links">
+    <a href="https://github.com/nganho124" target="_blank">GitHub</a>
+    <a href="https://linkedin.com/in/nganho" target="_blank">LinkedIn</a>
+    <a href="mailto:nganho124@gmail.com">Email</a>
+  </div>
+  <div class="footer-copy">© 2025 todayonepercent.com</div>
 </footer>
 <script src="/assets/js/main.js"></script>
 </body>
