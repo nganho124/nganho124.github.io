@@ -26,3 +26,25 @@ function scrollProjects(direction) {
   const grid = document.getElementById('projectsGrid');
   grid.scrollBy({ left: direction * 320, behavior: 'smooth' });
 }
+
+const section = document.getElementById("projects-section");
+
+Object.entries(projects).forEach(([category, items], i) => {
+  const marginTop = i === 0 ? "" : "style='margin-top:4rem'";
+  
+  const cards = items.map(p => `
+    <a href="${p.href}" class="project-card">
+      <span class="project-tag">${p.tag}</span>
+      <h3>${p.title}</h3>
+      <p>${p.desc}</p>
+      <div class="project-tools">
+        ${p.tools.map(t => `<span class="tool-badge">${t}</span>`).join("")}
+      </div>
+    </a>
+  `).join("");
+
+  section.innerHTML += `
+    <p class="section-label" ${marginTop} style="margin-bottom:1.5rem">${category}</p>
+    <div class="projects-grid">${cards}</div>
+  `;
+});

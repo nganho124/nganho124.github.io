@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>SC Dashboard · Ngan Ho</title>
+  <link rel="stylesheet" href="/assets/css/style.css"/>
+  <style>
+    /* ── Project Hero ── */
+    .project-hero {
+      padding: 4rem 0 2rem;
+      border-bottom: 1px solid var(--border, #e5e5e5);
+      margin-bottom: 3rem;
+    }
+    .project-hero .breadcrumb {
+      font-size: 0.8rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      opacity: 0.5;
+      margin-bottom: 1.25rem;
+    }
+    .project-hero .breadcrumb a {
+      text-decoration: none;
+      color: inherit;
+    }
+    .project-hero .breadcrumb a:hover { opacity: 0.8; }
+    .project-hero h1 {
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      line-height: 1.1;
+      margin-bottom: 1rem;
+    }
+    .project-hero .subtitle {
+      font-size: 1.1rem;
+      opacity: 0.65;
+      max-width: 560px;
+      line-height: 1.6;
+      margin-bottom: 2rem;
+    }
+
+    /* ── CTA Buttons ── */
+    .cta-group {
+      display: flex;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.65rem 1.4rem;
+      border-radius: 6px;
+      font-size: 0.875rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: opacity 0.15s, transform 0.15s;
+      cursor: pointer;
+    }
+    .btn:hover { opacity: 0.85; transform: translateY(-1px); }
+    .btn-primary {
+      background: var(--fg, #111);
+      color: var(--bg, #fff);
+    }
+    .btn-secondary {
+      background: transparent;
+      color: var(--fg, #111);
+      border: 1.5px solid var(--border, #ccc);
+    }
+    .btn svg { width: 15px; height: 15px; }
+
+    /* ── Meta row ── */
+    .project-meta {
+      display: flex;
+      gap: 2.5rem;
+      flex-wrap: wrap;
+      padding: 2rem 0;
+      border-bottom: 1px solid var(--border, #e5e5e5);
+      margin-bottom: 3rem;
+    }
+    .meta-item label {
+      display: block;
+      font-size: 0.7rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      opacity: 0.45;
+      margin-bottom: 0.35rem;
+    }
+    .meta-item span {
+      font-size: 0.925rem;
+      font-weight: 500;
+    }
+
+    /* ── Description ── */
+    .project-description {
+      max-width: 680px;
+      margin-bottom: 3.5rem;
+    }
+    .project-description h2 {
+      font-size: 1.3rem;
+      margin-bottom: 1rem;
+    }
+    .project-description p {
+      line-height: 1.75;
+      opacity: 0.75;
+      margin-bottom: 1rem;
+    }
+
+    /* ── Screenshot / Demo ── */
+    .demo-section {
+      margin-bottom: 3.5rem;
+    }
+    .demo-section h2 {
+      font-size: 1.3rem;
+      margin-bottom: 1.25rem;
+    }
+    .demo-frame {
+      width: 100%;
+      border-radius: 10px;
+      border: 1px solid var(--border, #e5e5e5);
+      overflow: hidden;
+      background: var(--surface, #f7f7f7);
+      aspect-ratio: 16/9;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1rem;
+    }
+    /* Replace the img below with your real screenshot */
+    .demo-frame img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .demo-frame .placeholder-text {
+      font-size: 0.85rem;
+      opacity: 0.35;
+      text-align: center;
+      padding: 2rem;
+    }
+    .demo-thumbnails {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+      gap: 0.75rem;
+      margin-top: 0.75rem;
+    }
+    .demo-thumbnails img {
+      width: 100%;
+      border-radius: 6px;
+      border: 1px solid var(--border, #e5e5e5);
+      aspect-ratio: 16/9;
+      object-fit: cover;
+    }
+    /* placeholder thumbnails */
+    .demo-thumbnails .thumb-placeholder {
+      aspect-ratio: 16/9;
+      border-radius: 6px;
+      border: 1px solid var(--border, #e5e5e5);
+      background: var(--surface, #f7f7f7);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.75rem;
+      opacity: 0.35;
+    }
+
+    /* ── Tools ── */
+    .tools-section {
+      margin-bottom: 3.5rem;
+    }
+    .tools-section h2 {
+      font-size: 1.3rem;
+      margin-bottom: 1.25rem;
+    }
+    .tools-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+    /* reuse .tool-badge from style.css, extended here */
+    .tool-badge-lg {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      padding: 0.45rem 1rem;
+      border-radius: 999px;
+      border: 1.5px solid var(--border, #ddd);
+      font-size: 0.8rem;
+      font-weight: 500;
+    }
+
+    /* ── Bottom CTA ── */
+    .project-footer-cta {
+      border-top: 1px solid var(--border, #e5e5e5);
+      padding: 3rem 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+    }
+    .project-footer-cta p {
+      font-size: 0.9rem;
+      opacity: 0.5;
+    }
+  </style>
+</head>
+<body>
+
+<!-- ── Nav (same as your other pages) ── -->
+<nav>
+  <a href="/" class="nav-logo">nganho124</a>
+  <ul class="nav-links">
+    <li><a href="/">Home</a></li>
+    <li><a href="/about.html">About</a></li>
+    <li><a href="/projects/" class="active">Projects</a></li>
+    <li><a href="/resume.html">Resume</a></li>
+    <li><a href="/blog/">Blog</a></li>
+  </ul>
+</nav>
+
+<main class="container">
+
+  <!-- ── Hero ── -->
+  <div class="project-hero">
+    <p class="breadcrumb">
+      <a href="/projects/">Projects</a> &nbsp;/&nbsp; SC Dashboard
+    </p>
+    <h1>Supply Chain<br><em>Dashboard</em></h1>
+    <p class="subtitle">
+      An interactive Streamlit dashboard for monitoring supply chain KPIs,
+      tracking inventory levels, and identifying bottlenecks across the pipeline.
+    </p>
+    <div class="cta-group">
+      <a href="https://yourname.streamlit.app/sc-dashboard" target="_blank" class="btn btn-primary">
+        <!-- External link icon -->
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+        View Live Demo
+      </a>
+      <a href="https://github.com/nganho124/sc-dashboard" target="_blank" class="btn btn-secondary">
+        <!-- GitHub icon -->
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0 1 12 6.844a9.59 9.59 0 0 1 2.504.337c1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.02 10.02 0 0 0 22 12.017C22 6.484 17.522 2 12 2z"/></svg>
+        View Source Code
+      </a>
+    </div>
+  </div>
+
+  <!-- ── Meta row ── -->
+  <div class="project-meta">
+    <div class="meta-item">
+      <label>Category</label>
+      <span>Business Intelligence</span>
+    </div>
+    <div class="meta-item">
+      <label>Type</label>
+      <span>Interactive Dashboard</span>
+    </div>
+    <div class="meta-item">
+      <label>Year</label>
+      <span>2025</span>
+    </div>
+    <div class="meta-item">
+      <label>Status</label>
+      <span>Live</span>
+    </div>
+  </div>
+
+  <!-- ── Description ── -->
+  <div class="project-description">
+    <h2>About the Project</h2>
+    <p>
+      <!-- Replace with your real description -->
+      This dashboard was built to give supply chain managers a real-time view
+      of inventory levels, order fulfilment rates, and supplier performance — all
+      in one place. Before this tool, reporting was done manually in Excel, which
+      took hours each week.
+    </p>
+    <p>
+      The app connects directly to the data warehouse, applies business logic, and
+      renders interactive charts so stakeholders can drill down without writing a
+      single query.
+    </p>
+  </div>
+
+  <!-- ── Screenshot / Demo ── -->
+  <div class="demo-section">
+    <h2>Preview</h2>
+
+    <!-- Main screenshot — replace src with your real image -->
+    <div class="demo-frame">
+      <!-- OPTION A: real screenshot -->
+      <!-- <img src="./assets/screenshot-main.png" alt="SC Dashboard main view"/> -->
+
+      <!-- OPTION B: placeholder until you have a screenshot -->
+      <p class="placeholder-text">Replace with your dashboard screenshot<br>(./assets/screenshot-main.png)</p>
+    </div>
+
+    <!-- Additional thumbnails — duplicate/remove as needed -->
+    <div class="demo-thumbnails">
+      <!-- <img src="./assets/screenshot-inventory.png" alt="Inventory view"/> -->
+      <!-- <img src="./assets/screenshot-suppliers.png" alt="Supplier view"/> -->
+      <div class="thumb-placeholder">Screenshot 2</div>
+      <div class="thumb-placeholder">Screenshot 3</div>
+      <div class="thumb-placeholder">Screenshot 4</div>
+    </div>
+  </div>
+
+  <!-- ── Tools Used ── -->
+  <div class="tools-section">
+    <h2>Tools & Technologies</h2>
+    <div class="tools-grid">
+      <span class="tool-badge-lg">🐍 Python</span>
+      <span class="tool-badge-lg">⚡ Streamlit</span>
+      <span class="tool-badge-lg">🐼 Pandas</span>
+      <span class="tool-badge-lg">📊 Plotly</span>
+      <span class="tool-badge-lg">🗄️ SQL</span>
+      <!-- Add or remove badges to match your actual stack -->
+    </div>
+  </div>
+
+  <!-- ── Bottom CTA ── -->
+  <div class="project-footer-cta">
+    <p>← <a href="/projects/">Back to all projects</a></p>
+    <div class="cta-group">
+      <a href="https://yourname.streamlit.app/sc-dashboard" target="_blank" class="btn btn-primary">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+        View Live Demo
+      </a>
+      <a href="https://github.com/nganho124/sc-dashboard" target="_blank" class="btn btn-secondary">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0 1 12 6.844a9.59 9.59 0 0 1 2.504.337c1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.02 10.02 0 0 0 22 12.017C22 6.484 17.522 2 12 2z"/></svg>
+        View Source Code
+      </a>
+    </div>
+  </div>
+
+</main>
+
+<footer>
+  <p>
+    <a href="https://github.com/nganho124" target="_blank">GitHub</a> &nbsp;·&nbsp;
+    <a href="https://linkedin.com" target="_blank">LinkedIn</a> &nbsp;·&nbsp;
+    <a href="mailto:your@email.com">Email</a>
+  </p>
+  <p style="margin-top:0.75rem">© 2025 Ngan Ho · todayonepercent.com</p>
+</footer>
+
+<script src="/assets/js/main.js"></script>
+</body>
+</html>
