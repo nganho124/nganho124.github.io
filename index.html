@@ -9,21 +9,7 @@
 </head>
 <body>
 
-<nav>
-  <a href="/" class="nav-logo">Ngan Ho <sup>Portfolio</sup></a>
-  <ul class="nav-links">
-    <li><a href="/" class="active">Home</a></li>
-    <li><a href="/about.html">About</a></li>
-    <li><a href="/projects/">Projects</a></li>
-    <li><a href="/resume.html">Resume</a></li>
-    <li><a href="/blog/">Blog</a></li>
-  </ul>
-  <div class="lang-toggle">
-    <a href="/" class="active">EN</a>
-    <span>/</span>
-    <a href="/de/">DE</a>
-  </div>
-</nav>
+<div id="nav-placeholder"></div>
 
 <main>
   <section class="hero container">
@@ -60,51 +46,11 @@
     <p class="section-desc">A selection of data science, BI, and pipeline projects from my studies and work.</p>
     <div class="scroll-wrapper">
       <button class="scroll-btn left" onclick="scrollProjects(-1)">←</button>
-      <div class="projects-grid" id="projectsGrid">
-        <a href="/projects/" class="project-card">
-          <div class="project-card-image">Project Preview</div>
-          <div class="project-card-body">
-            <span class="project-tag">Business Intelligence</span>
-            <h3>Supply Chain Performance Dashboard</h3>
-            <p>Interactive SC dashboard tracking regional KPIs with ...</p>
-            <div class="project-tools">
-              <span class="tool-badge">Python Streamlit</span>
-              <span class="tool-badge">SQL</span>
-            </div>
-          </div>
-        </a>
-        <a href="/projects/" class="project-card">  
-          <div class="project-card-image">Project Preview</div>
-          <div class="project-card-body">
-            <span class="project-tag">Data Science</span>
-            <h3>Customer Churn Prediction</h3>
-            <p>ML pipeline predicting churn probability with 87% accuracy using gradient boosting and SHAP explainability.</p>
-            <div class="project-tools">
-              <span class="tool-badge">Python</span>
-              <span class="tool-badge">scikit-learn</span>
-              <span class="tool-badge">SHAP</span>
-            </div>
-          </div>
-        </a>
-        <a href="/projects/" class="project-card">
-          <div class="project-card-image">Project Preview</div>
-          <div class="project-card-body">          
-            <span class="project-tag">Data Engineering</span>
-            <h3>ETL Pipeline Automation</h3>
-            <p>End-to-end data pipeline ingesting multi-source data into a normalised warehouse with scheduled refresh.</p>
-            <div class="project-tools">
-              <span class="tool-badge">Python</span>
-              <span class="tool-badge">Airflow</span>
-              <span class="tool-badge">PostgreSQL</span>
-            </div>
-          </div>
-        </a>
-      </div>
-      <div style="margin-top:2rem">
-        <a href="/projects/" class="btn btn-outline">All Projects →</a>
-        </div>
-        <button class="scroll-btn right" onclick="scrollProjects(1)">→</button>
-      </div>
+      <div class="projects-grid" id="projectsGrid"></div>
+      <button class="scroll-btn right" onclick="scrollProjects(1)">→</button>
+    </div>
+    <div style="margin-top:2rem">
+      <a href="/projects/" class="btn btn-outline">All Projects →</a>
     </div>
   </section>
 
@@ -139,16 +85,28 @@
   </section>
 </main>
 
-<footer>
-  <div class="footer-logo">Ngan Ho</div>
-  <div class="footer-links">
-    <a href="https://github.com/nganho124" target="_blank">GitHub</a>
-    <a href="https://www.linkedin.com/in/bao-ngan-ho/" target="_blank">LinkedIn</a>
-    <a href="mailto:your@email.com">Email</a>
-  </div>
-  <div class="footer-copy">© 2025 todayonepercent.com</div>
-</footer>
+<div id="footer-placeholder"></div>
 
+<script src="/assets/js/projects-data.js"></script>
 <script src="/assets/js/main.js"></script>
+<script src="/assets/js/components.js"></script>
+<script>
+  const grid = document.getElementById("projectsGrid");
+  Object.values(projects).flat().forEach(p => {
+    grid.innerHTML += `
+      <a href="${p.href}" class="project-card">
+        <div class="project-card-image">Project Preview</div>
+        <div class="project-card-body">
+          <span class="project-tag">${p.tag}</span>
+          <h3>${p.title}</h3>
+          <p>${p.desc}</p>
+          <div class="project-tools">
+            ${p.tools.map(t => `<span class="tool-badge">${t}</span>`).join("")}
+          </div>
+        </div>
+      </a>
+    `;
+  });
+</script>
 </body>
 </html>

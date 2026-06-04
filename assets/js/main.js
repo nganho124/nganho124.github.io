@@ -34,11 +34,14 @@ Object.entries(projects).forEach(([category, items], i) => {
   
   const cards = items.map(p => `
     <a href="${p.href}" class="project-card">
-      <span class="project-tag">${p.tag}</span>
-      <h3>${p.title}</h3>
-      <p>${p.desc}</p>
-      <div class="project-tools">
-        ${p.tools.map(t => `<span class="tool-badge">${t}</span>`).join("")}
+      <div class="project-card-image">Project Preview</div>
+      <div class="project-card-body">
+        <span class="project-tag">${p.tag}</span>
+        <h3>${p.title}</h3>
+        <p>${p.desc}</p>
+        <div class="project-tools">
+          ${p.tools.map(t => `<span class="tool-badge">${t}</span>`).join("")}
+        </div>
       </div>
     </a>
   `).join("");
