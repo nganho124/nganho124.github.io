@@ -1,0 +1,110 @@
+[
+  {
+    "category": "boolean",
+    "file": "01-a-single-step.html",
+    "title": "01. A single step",
+    "isoDate": "2024-01-18",
+    "date": "January 18, 2024",
+    "readTime": "4 min read",
+    "excerpt": "Even the longest journey starts with one step forward — why I want to write, and why now."
+  },
+  {
+    "category": "boolean",
+    "file": "02-learn-from-the-unknown.html",
+    "title": "02. Learn from the unknown",
+    "isoDate": "2024-01-30",
+    "date": "January 30, 2024",
+    "readTime": "4 min read",
+    "excerpt": "Keep on working and moving forward, even if we are in the fog, the fastest way to get out of this is to keep on walking."
+  },
+  {
+    "category": "dictionary",
+    "file": "03-consulting-life-in-a-nutshell-pt-1.html",
+    "title": "03. Consulting Life in a Nutshell – pt.1: Who on Earth is a consultant?",
+    "isoDate": "2024-12-10",
+    "date": "February 10, 2024",
+    "readTime": "3 min read",
+    "excerpt": "A brief introduction to the world of Management Consulting — what it is, the main types of services, and the big players in the industry."
+  },
+  {
+    "category": "boolean",
+    "file": "04-it-will-work-somehow.html",
+    "title": "04. It will work somehow in the future",
+    "isoDate": "2024-02-24",
+    "date": "February 24, 2024",
+    "readTime": "3 min read",
+    "excerpt": "How the 'Connect the dots' mindset helps me embrace out-of-scope tasks and trust that they will be useful someday."
+  },
+  {
+    "category": "numeric",
+    "file": "05-introduce-my-assistant-chatgpt.html",
+    "title": "05. Introduce my assistant: ChatGPT",
+    "isoDate": "2024-03-15",
+    "date": "March 15, 2024",
+    "readTime": "5 min read",
+    "excerpt": "How I adapt ChatGPT into my daily life and classify tasks into three groups to maximize productivity without losing my edge."
+  },
+  {
+    "category": "dictionary",
+    "file": "06-interviewer-for-the-very-first-time.html",
+    "title": "06. Interviewer – for the very first time",
+    "isoDate": "2024-04-12",
+    "date": "April 12, 2024",
+    "readTime": "4 min read",
+    "excerpt": "My very first time sitting in the interviewer's seat and the lessons I learned about cultural fit, honesty, and communication skills."
+  },
+  {
+    "category": "boolean",
+    "file": "07-be-rationally-emotional.html",
+    "title": "07. Be rationally emotional",
+    "isoDate": "2024-05-20",
+    "date": "May 20, 2024",
+    "readTime": "5 min read",
+    "excerpt": "Growing up means learning how to handle sadness—being 'rationally emotional' and staying productive even when things get tough."
+  },
+  {
+    "category": "numeric",
+    "file": "08-bottom-up-and-top-down-in-project-management.html",
+    "title": "08. Bottom-up and Top-down in Project Management",
+    "isoDate": "2024-06-10",
+    "date": "June 10, 2024",
+    "readTime": "5 min read",
+    "excerpt": "A reflection on the pros and cons of Top-down and Bottom-up approaches in project management after navigating a complex consulting project."
+  },
+  {
+    "category": "numeric",
+    "file": "09-programming-is-like-continuously-teaching-to-yourself.html",
+    "title": "09. Programming is like, continuously teaching to yourself",
+    "isoDate": "2024-06-25",
+    "date": "June 25, 2024",
+    "readTime": "5 min read",
+    "excerpt": "A reflection on continuous learning in programming and the differences between Object-Oriented Programming (OOP) and Procedural Programming."
+  },
+  {
+    "category": "numeric",
+    "file": "10-trainer-for-the-very-first-time.html",
+    "title": "10. Trainer – for the very first time",
+    "isoDate": "2024-04-07",
+    "date": "April 7, 2025",
+    "readTime": "6 min read",
+    "excerpt": "Lessons learned from my first time as a Trainer, sharing insights on Supply Chain Decarbonization with over 300 students."
+  },
+  {
+    "category": "dictionary",
+    "file": "11-guest-lecturer-for-the-very-first-time.html",
+    "title": "11. Guest Lecturer – For the very first time",
+    "isoDate": "2024-05-26",
+    "date": "May 26, 2025",
+    "readTime": "5 min read",
+    "excerpt": "Returning to my university to deliver a guest lecture on Supply Chain Network Design and explaining how data analytics meets operations management."
+  },
+  {
+    "category": "string",
+    "file": "12-sawasdee-kha-a-business-trip-to-thailand.html",
+    "title": "12. Sawasdee Kha – A Business Trip to Thailand",
+    "isoDate": "2024-08-25",
+    "date": "August 25, 2025",
+    "readTime": "4 min read",
+    "excerpt": "Exploring Operation Excellence, learning from a new culture, and understanding the people behind the processes during a business trip to Thailand."
+  }
+]

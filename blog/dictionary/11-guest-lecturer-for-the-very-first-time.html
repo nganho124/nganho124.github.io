@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="translations" content="vi">
+  <title>Guest Lecturer – For the very first time — Ngan Ho</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;1,400;1,500&family=DM+Sans:wght@300;400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/css/style.css"/>
+</head>
+<body>
+
+  <div id="nav-placeholder"></div>
+
+  <article>
+    <header class="post-header">
+      <div class="post-category">Dictionary</div>
+      <h1 class="post-title">11. Guest Lecturer – For the very first time</h1>
+      <p class="post-subtitle">Returning to my university to deliver a guest lecture on Supply Chain Network Design and explaining how data analytics meets operations management.</p>
+      <div class="post-meta">
+        <span>Ngan Ho</span>
+        <span class="dot">·</span>
+        <span>May 26, 2025</span>
+        <span class="dot">·</span>
+        <span>5 min read</span>
+      </div>
+    </header>
+
+    <div class="post-body">
+
+      <p>I had an opportunity to comeback to my university, HCM University of Technology last week to deliver a guest lecture on the topic of “Supply Chain Network Design”.</p>
+
+      <p>It was a fantastic experience, because I had a chance to stand in the class where I was a student 4 years ago, introduced that there’s a job position called “Supply Chain Analyst”, where we use the data, usually transactional, to evaluate the network performance and design the future optimized network using optimization or simulation model.</p>
+
+      <p>Why is it really important to me? I remembered back when I was a junior in uni, I was interested in both operations management and data analytics. My thesis supervisor, also the teacher in data-related subjects, told me that it’s hard to find any job that combines both of these fields, so I should choose one of them to focus on and develop my career. But then, I found the job in my company, it’s the combination of the 2 listed areas above, and the rest is history (jk).</p>
+
+      <p>Back to the topic of the lecture, so we bring one of the most complicated projects we did before, the one where we designed the supply chain network of 2030 for plumbing and bathroom equipment in Australia. We showed the student:</p>
+
+      <ul style="margin-left: 20px; margin-bottom: 16px;">
+        <li>What is the Business Problem?</li>
+        <li>How to choose the Technical Solution for that?</li>
+        <li>What did we do and What is the output of the project?</li>
+      </ul>
+
+      <p>Let me walk you through these topics, one by one.</p>
+
+      <h2 class="section-heading">What is the Business Problem we need to solve?</h2>
+
+      <p>Our client is a leading company in field of plumbing and bathroom equipment in Australia. In the last 10 years, they did a lot of M&A (merge and acquisition) project. When it buy the other company, it also absorb these companies’ facilities into their supply chain network. That leads to the overlapping of the distribution flows, e.g 1 store can receive 2 shipments from 2 different WHs in Melbourne for 2 different types of products. The delivery cost in this case is higher compared to the scenario if you only have 1 big warehouse, stored all of the products and only ship 1 delivery to the store.</p>
+
+      <p>So that client, they come to us and have the question: <em>”How should we consider to close some of our warehouses, re-ranging the products we have so that it will locate in the warehouse that is closest to the demand?”</em></p>
+
+      <h2 class="section-heading">How to choose the Technical Solution for that problem?</h2>
+
+      <p>So, to answer the client question, we need to do the Network Design project. And the main question for this Network Design, is answer these 3 questions:</p>
+
+      <ol style="margin-left: 20px; margin-bottom: 16px; color: var(--ink);">
+        <li style="margin-bottom: 8px;">How many warehouses should I have in my network and the location of each warehouse?</li>
+        <li style="margin-bottom: 8px;">What is the distribution flows to deliver the products to customer?</li>
+      </ol>
+
+      <p>And, at the end, the answer for these 2 questions will lead to the optimal cost-to-serve in the network.</p>
+
+      <h3 style="font-family: var(--serif); font-weight: 500; font-size: 1.1rem; margin-top: 32px; margin-bottom: 12px;">Why the number of WHs affect the total cost?</h3>
+
+      <p>Usually, in Supply Chain network, there is 2 types of cost that drive the total cost, that’s Warehousing Cost and Transportation Cost.</p>
+
+      <p>Look at the visualization below, you can see the pattern that when you have:</p>
+      <ul style="margin-left: 20px; margin-bottom: 16px;">
+        <li style="margin-bottom: 8px;"><strong>Only 1 WH (Centralized) network:</strong> You have very low Warehousing Cost, but the Transportation Cost will be much much higher because you have the shipment that goes across the country.</li>
+        <li style="margin-bottom: 8px;"><strong>When the number of WHs increases:</strong> the Warehousing Cost will increase also and the Transportation Cost decrease because now you are closer to your demand point, so your delivery distance would be much smaller.</li>
+        <li><strong>But then, if you have too much WHs:</strong> the decrease in your Transportation Cost is not compensated the increase in Warehousing Cost anymore. In this case, your total cost will increase.</li>
+      </ul>
+
+      <p>In short, the total cost variation would look like this with the increment of number of WHs.</p>
+
+      <h3 style="font-family: var(--serif); font-weight: 500; font-size: 1.1rem; margin-top: 32px; margin-bottom: 12px;">Why the type of distribution flows will affect the network?</h3>
+
+      <p>Now let’s look at how different distribution flow designs affect inventory levels across the network.</p>
+
+      <p>We’ll start on the left with the <strong>Centralised model</strong>. In this setup, inventory is stored in a single central location and all demand flows through it. Because this node needs to serve a wide geographic area and absorb all demand variability, we end up needing a large buffer stock. That means higher inventory levels overall.</p>
+
+      <p>Now in the <strong>Decentralised model</strong>, shown in the middle, we push stock outward to multiple regional warehouses. Each of these locations holds its own safety stock to buffer local demand. But because each node is isolated, there’s no pooling of risk. So even though you’re closer to the customer, inventory actually increases, especially as you duplicate stock across locations.</p>
+
+      <p>Finally, on the right, we have the <strong>Hybrid model</strong>. This is a mix of both: we hold strategic inventory centrally for slow-movers or unpredictable items, and push fast-moving or predictable stock closer to the customer. The result is smarter risk pooling and fewer duplications across the system. This allows us to reduce overall inventory while still improving responsiveness.</p>
+
+      <p>So, the takeaway here is: the way we design our distribution flows has a big impact not just on service level, but on how much working capital we tie up in inventory. The hybrid model offers a strong balance—responsiveness without excess stock.</p>
+
+      <p>And the point is, in the current network of our client, there’re:</p>
+      <ul style="margin-left: 20px; margin-bottom: 16px;">
+        <li>4 types of distribution flows</li>
+        <li>30000+ products</li>
+        <li>600+ stores</li>
+        <li>11 warehouses</li>
+      </ul>
+
+      <p>So, this is the number of possibilities if we want to test all the products go through all the flows in all warehouses to serve all stores and then pick the flows with lowest cost:</p>
+
+      <p><em>(This number is just the roughly estimated numbers, in reality, we could reduce this number by adding constraints to network, e.g the warehouse in Brisbane shouldn’t deliver the store in Perth because of the long distance)</em></p>
+
+      <p>Our technical solution is using <strong>Optimization Model</strong> to solve that, because this model is able to:</p>
+      <ul style="margin-left: 20px; margin-bottom: 16px;">
+        <li>Test all the possibilities</li>
+        <li>Find the global optimum solution</li>
+      </ul>
+      <p>...and we did build the model using a tool called AMPL.</p>
+
+      <h2 class="section-heading">What do we get from the output of the model?</h2>
+
+      <p>Let’s skip all the technical parts of this project (My boss said we can even write a paper about it) and jump straight to the good part: What do we show our client about their optimal supply chain network in 2030? The proposed future network would have:</p>
+
+      <ul style="margin-left: 20px; margin-bottom: 16px;">
+        <li>Fewer numbers of WH</li>
+        <li>Less cost-to-serve</li>
+        <li>Reduce the inventory level</li>
+        <li>Localize the number of products, and reorganize the fast-moving products to the regional warehouses.</li>
+      </ul>
+
+      <p><em>(Disclaimer: The maps and figures are dummy and do not reflect real-world supply chains.)</em></p>
+
+      <div class="post-closing">
+        <span class="sign-off">I will try to update this blog with a more detailed explanation in the upcoming days of June. The project work is too heavy these days.</span>
+        <span class="post-date">May 26, 2025</span>
+      </div>
+
+    </div>
+  </article>
+
+  <div id="footer-placeholder"></div>
+  <script src="/assets/js/components.js"></script>
+
+</body>
+</html>
