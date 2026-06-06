@@ -1,5 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400;1,500&family=DM+Mono:wght@400;500&family=DM+Sans:wght@300;400;500;600&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400;1,500&family=DM+Mono:wght@400;500&family=Be+Vietnam+Pro:wght@300;400;500;600&display=swap');
 :root {
   /* Colors */
   --bg: #ffffff;
@@ -25,7 +24,7 @@
   /* Fonts */
   --serif: 'Playfair Display', serif;
   --mono:  'DM Mono', monospace;
-  --sans:  'DM Sans', sans-serif;
+  --sans:  'Be Vietnam Pro', sans-serif;
 }
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -39,6 +38,18 @@ body {
   min-height: 100vh; 
   -webkit-font-smoothing: antialiased;
 }
+
+p a {
+  color: inherit;
+  font-weight: bold;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+p a:hover {
+  color: var(--accent); /* Uses your existing theme orange! */
+}
+
 
 /* ── NAV ── */
 nav {
@@ -621,7 +632,7 @@ footer {
    Blog post pages
 ════════════════════════════════ */
 .post-header {
-  max-width: 680px;
+  max-width: 720px;
   margin: 0 auto;
   padding: 80px 32px 56px;
   border-bottom: 1px solid var(--rule);
@@ -682,7 +693,7 @@ h1.post-title {
 
 /* ── Body ── */
 .post-body {
-  max-width: 680px;
+  max-width: 720px;
   margin: 0 auto;
   padding: 60px 32px 100px;
 }
@@ -691,6 +702,7 @@ h1.post-title {
   margin-bottom: 1.7em;
   font-size: 1rem;
   color: var(--ink);
+  text-align: justify;
 }
 
 /* Pull quote */
@@ -812,6 +824,43 @@ h2.section-heading {
   animation: fadein 0.8s ease both;
 }
 .post-body { animation-delay: 0.15s; }
+
+/* Ensure the category link doesn't get an underline */
+a.post-category {
+  text-decoration: none;
+  transition: opacity 0.2s ease;
+}
+
+/* Makes the category visually "click" when a user hovers over it */
+a.post-category:hover {
+  opacity: 0.7; 
+}
+
+/* ── Unordered Lists in Blog Posts ── */
+.post-body ul {
+  margin-top: 1.5em;       /* Space between the top paragraph and the list */
+  margin-bottom: 1.7em;    /* Space between the list and the bottom paragraph */
+  padding-left: 2em;       /* Indentation space from the left edge */
+}
+
+.post-body li {
+  margin-bottom: 0.6em;    /* Adds a little breathing room between bullet points */
+  line-height: 1.7;        /* Matches your paragraph readability */
+  color: var(--ink);       /* Uses your exact theme text color */
+}
+
+/* Removes the extra gap at the very end of the list */
+.post-body li:last-child {
+  margin-bottom: 0;
+}
+
+.picture-center {
+  display: block;              /* Make image a block element */
+  margin-left: auto;           /* Auto left margin */
+  margin-right: auto;          /* Auto right margin */
+  width: 80%;                  /* Optional: control image size */
+  margin-bottom: 20px;
+}
 
 @keyframes fadein {
   from { opacity: 0; transform: translateY(16px); }
