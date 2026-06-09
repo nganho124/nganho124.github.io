@@ -67,8 +67,15 @@ async function loadPostList(containerId, category) {
   const container = document.getElementById(containerId);
   if (!container) return;
 
-  const res = await fetch('/blog/posts.json');
+  // Detect language from URL: /blog/vi/... → 'vi', /blog/de/... → 'de', else default
+  const langMatch = window.location.pathname.match(/^\/blog\/(vi|de)\//);
+  const lang = langMatch ? langMatch[1] : null;
+
+  // Fetch the language-specific posts.json, fallback to default
+  const jsonPath = lang ? `/blog/${lang}/posts.json` : '/blog/posts.json';
+  const res = await fetch(jsonPath);
   const all = await res.json();
+
   const posts = all
     .filter(p => p.category === category)
     .sort((a, b) => new Date(b.isoDate) - new Date(a.isoDate));
@@ -78,8 +85,11 @@ async function loadPostList(containerId, category) {
     return;
   }
 
+  // Prefix post links with the language path if needed
+  const basePath = lang ? `/blog/${lang}` : '/blog';
+
   container.innerHTML = posts.map(post => `
-    <a href="/blog/${post.category}/${post.file}" class="post-card">
+    <a href="${basePath}/${post.category}/${post.file}" class="post-card">
       <div class="post-card-meta">${post.date} · ${post.readTime}</div>
       <h2 class="post-card-title">${post.title}</h2>
       <p class="post-card-excerpt">${post.excerpt}</p>

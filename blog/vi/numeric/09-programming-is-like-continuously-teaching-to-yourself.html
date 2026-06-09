@@ -36,29 +36,46 @@
         <p>“Programming is always like teaching to yourself. So I bring you the basic concept to empower you to learn and develop more.”</p>
       </blockquote>
 
-      <p>Nghĩa là, việc lập trình thật ra là quá trình tự học, bởi vì công nghệ trong ngành thay đổi rất nhanh, trường học chỉ cung cấp cho chúng ta những kiến thức cơ bản, mà ngôn ngữ hay công nghệ nào cũng có thể áp dụng được, sau đó việc áp dụng và cập nhật công nghệ thì chúng ta sẽ tự học thêm. Mình thấy câu này hay quá nên dùng câu này để đặt tiêu đề, dù nội dung chính của bài này sẽ là về hai loại ngôn ngữ lập trình thông dụng: hướng đối tượng và hướng chức năng/thủ tục (tiếng Anh là object-oriented and procedural programming).</p>
+      <p>Nghĩa là, việc lập trình thật ra là quá trình tự học, bởi vì công nghệ trong ngành thay đổi rất nhanh, 
+        trường học chỉ cung cấp cho chúng ta những kiến thức cơ bản, mà ngôn ngữ hay công nghệ nào cũng có thể áp dụng được, 
+        sau đó việc áp dụng và cập nhật công nghệ thì chúng ta sẽ tự học thêm. 
+        Mình thấy câu này hay quá nên dùng câu này để đặt tiêu đề, dù nội dung chính của bài này sẽ là về hai loại ngôn ngữ lập trình thông dụng: hướng đối tượng và hướng chức năng/thủ tục (tiếng Anh là object-oriented and procedural programming).</p>
 
       <h2 class="section-heading">Hai loại này là gì và khác nhau ở điểm nào?</h2>
 
+      <p><strong>Lập trình hướng đối tượng – Object-oriented Programming (gọi tắt là OOP):</strong></p>
       <ul>
-        <li style="margin-bottom: 12px;"><strong>Lập trình hướng đối tượng – Object-oriented Programming (gọi tắt là OOP):</strong> Code của bạn, ví dụ như những hàm, sẽ được xây dựng trên đối tượng (object). Mình có 1 object là 1 bảng dữ liệu, thì những chức năng tính toán mình muốn áp dụng lên bảng dữ liệu đó sẽ được xây dựng riêng. Một object khác, ví dụ như 1 con số, sẽ không dùng được chức năng tính toán của bảng nếu không có mối quan hệ gì. Các ngôn ngữ hướng đối tượng thường gặp: C++, Java, Python…</li>
-        <li><strong>Lập trình hướng chức năng – Procedural Programming Language:</strong> Sẽ được xây dựng dựa trên chức năng, ví dụ, mình muốn cộng tất cả giá trị được nhập vào, mình sẽ xây dựng hàm sum(). Nếu mình không setup gì đặc biệt thì tất cả các đối tượng, object sẽ có thể dùng chung hàm sum mà mình xây dựng ở trên. Các ngôn ngữ hướng chức năng thường gặp: C, Pascal, R,…</li>
+        <li>Code của bạn, ví dụ như những hàm, sẽ được xây dựng trên đối tượng (object).</li>
+        <li>Mình có 1 object là 1 bảng dữ liệu, thì những chức năng tính toán mình muốn áp dụng lên bảng dữ liệu đó sẽ được xây dựng riêng.</li>
+        <li>Một object khác, ví dụ như 1 con số, sẽ không dùng được chức năng tính toán của bảng nếu không có mối quan hệ gì.</li>
+        <li>Các ngôn ngữ hướng đối tượng thường gặp: C++, Java, Python…</li>
       </ul>
+
+      <p><strong>Lập trình hướng chức năng – Procedural Programming Language:</strong></p>
+      <ul>
+        <li>Sẽ được xây dựng dựa trên chức năng</li>
+        <li>Ví dụ, mình muốn cộng tất cả giá trị được nhập vào, mình sẽ xây dựng hàm sum().</li>
+        <li>Nếu mình không setup gì đặc biệt thì tất cả các đối tượng, object sẽ có thể dùng chung hàm sum mà mình xây dựng ở trên.</li>
+        <li>Các ngôn ngữ hướng chức năng thường gặp: C, Pascal, R,…</li>
+      </ul>
+
 
       <h2 class="section-heading">Vậy thì mỗi loại có ưu/nhược điểm gì?</h2>
 
-      <p><strong>Lập trình hướng đối tượng</strong></p>
+      <h3 style="font-family: var(--serif); font-weight: 500; font-size: 1.1rem; margin-top: 32px; margin-bottom: 12px;">Lập trình hướng đối tượng</h3>
 
       <p>Trước khi nói về ưu điểm của lập trình hướng đối tượng, mình sẽ giới thiệu một chức năng đặc biệt của các đối tượng, đó là thừa kế – <em>inheritance</em>.</p>
 
       <p>Ví dụ thế này, mình có một đối tượng là Học sinh. Những chức năng cơ bản của học sinh có thể kể đến như:</p>
-      <ul style="margin-left: 20px; margin-bottom: 16px;">
+      <ul>
         <li>Đến trường học</li>
         <li>Nghe giảng</li>
         <li>Làm bài tập</li>
       </ul>
 
       <p>Mình muốn xây dựng một đối tượng thứ hai tên là Lớp Trưởng, Lớp Trưởng có tất cả các chức năng của học sinh bình thường, nhưng thêm một chức năng đặc biệt là Quản lý lớp.</p>
+
+      <img src="/assets/images/09-OOP-vi.png" class="picture-center">
 
       <p>Trong môi trường lập trình hướng đối tượng, để làm được các điều trên, mình sẽ:</p>
       <ol style="margin-left: 20px; margin-bottom: 16px;">
@@ -68,22 +85,39 @@
         <li>Tạo thêm chức năng “Quản lý lớp” cho Lớp Trưởng.</li>
       </ol>
 
-      <p>Từ ví dụ trên, chúng ta có thể nhận ra được ưu điểm của lập trình hướng đối tượng là thay vì phải viết lại tất cả tính năng của Học Sinh vào Lớp Trưởng, chúng ta có thể nhẹ nhàng dùng chức năng “thừa kế” ở đây. Với một chương trình code phức tạp, cách code này sẽ đem lại rất nhiều lợi ích, hạn chế việc code trùng lặp khắp mọi nơi ở các đối tượng khác nhau nhưng có cùng chức năng.</p>
+      <p>Từ ví dụ trên, chúng ta có thể nhận ra được ưu điểm của lập trình hướng đối tượng là thay vì phải viết lại tất cả tính năng của Học Sinh vào Lớp Trưởng, chúng ta có thể nhẹ nhàng dùng chức năng “thừa kế” ở đây. 
+        Với một chương trình code phức tạp, cách code này sẽ đem lại rất nhiều lợi ích, hạn chế việc code trùng lặp khắp mọi nơi ở các đối tượng khác nhau nhưng có cùng chức năng.</p>
 
-      <p>Vậy nhược điểm là gì? Khi các đối tượng trong code đều liên kết với nhau, nếu chúng ta muốn tìm hiểu một đối tượng có những chức năng gì, chúng ta phải xem code lần lượt của tất cả các đối tượng liên quan. Mà giả sử người viết những đối tượng đó không phải là bạn thì sao? Việc đọc code của người khác quằn cỡ nào thì mọi người cũng biết rồi đấy :))</p>
+      <p>Vậy nhược điểm là gì? Khi các đối tượng trong code đều liên kết với nhau, nếu chúng ta muốn tìm hiểu một đối tượng có những chức năng gì, chúng ta phải xem code lần lượt của tất cả các đối tượng liên quan. 
+        Mà giả sử người viết những đối tượng đó không phải là bạn thì sao? 
+        Việc đọc code của người khác quằn cỡ nào thì mọi người cũng biết rồi đấy :))</p>
 
-      <p><strong>Lập trình hướng chức năng</strong></p>
+      <h3 style="font-family: var(--serif); font-weight: 500; font-size: 1.1rem; margin-top: 32px; margin-bottom: 12px;">Lập trình hướng chức năng</h3>
 
-      <p>Ngược lại với hướng đối tượng, cùng ở ví dụ ở trên, khi code theo hướng chức năng, mình sẽ tạo ra hàm “Đến trường học”. Nếu mình muốn Học Sinh và Lớp Trưởng cùng ở trường, mình sẽ áp dụng hàm đó cho cả 2. Không có mối quan hệ nhất định rằng chức năng “Đến trường học” nằm trong tính năng của Học Sinh hay Lớp Trưởng.</p>
+      <p>Ngược lại với hướng đối tượng, cùng ở ví dụ ở trên, khi code theo hướng chức năng, mình sẽ tạo ra hàm “Đến trường học”. 
+        Nếu mình muốn Học Sinh và Lớp Trưởng cùng ở trường, mình sẽ áp dụng hàm đó cho cả 2. 
+        Không có mối quan hệ nhất định rằng chức năng “Đến trường học” nằm trong tính năng của Học Sinh hay Lớp Trưởng.</p>
 
-      <p>Vậy ưu điểm của phương pháp này là gì? Khi code theo hướng chức năng, mình chỉ cần quan tâm đến việc mình muốn làm gì đến đối tượng đó. Từ đó code của mình sẽ theo đúng flow suy nghĩ. Bạn có thể tưởng tượng giống như việc bạn viết một bài văn, bạn chỉ cần cầm bút lên và miêu tả những gì bạn thích thôi. Trong khi nếu bạn code theo hướng hướng đối tượng, bạn cần phải biết, bài văn bạn viết là miêu tả hay nghị luận, mỗi loại sẽ có một dàn ý nhất định mà bạn phải đi theo.</p>
+      <p><strong>Vậy ưu điểm của phương pháp này là gì?</strong></p> 
+        Khi code theo hướng chức năng, mình chỉ cần quan tâm đến việc mình muốn làm gì đến đối tượng đó. 
+        Từ đó code của mình sẽ theo đúng flow suy nghĩ. 
+        Bạn có thể tưởng tượng giống như việc bạn viết một bài văn, bạn chỉ cần cầm bút lên và miêu tả những gì bạn thích thôi. 
+        Trong khi nếu bạn code theo hướng hướng đối tượng, bạn cần phải biết, bài văn bạn viết là miêu tả hay nghị luận, mỗi loại sẽ có một dàn ý nhất định mà bạn phải đi theo.</p>
 
-      <p>Xin tự hào giới thiệu một đoạn code mình dùng để tính Chi phí vận chuyển ở thành phố B trong ngôn ngữ R như sau. Nhìn thì rất đáng sợ, nhưng thật ra lúc làm, mình sẽ code từng đoạn từng đoạn, rồi gắn chúng lại với nhau. Ưu điểm là cho dù tính toán của mình có phức tạp như thế nào thì chỉ cần code theo hướng chức năng, tất cả đều có thể liên kết lại với nhau.</p>
+      <p>Xin tự hào giới thiệu một đoạn code mình dùng để tính Chi phí vận chuyển ở thành phố B trong ngôn ngữ R như sau. 
+        Nhìn thì rất đáng sợ, nhưng thật ra lúc làm, mình sẽ code từng đoạn từng đoạn, rồi gắn chúng lại với nhau. 
+        Ưu điểm là cho dù tính toán của mình có phức tạp như thế nào thì chỉ cần code theo hướng chức năng, tất cả đều có thể liên kết lại với nhau.</p>
 
-      <p>Nhược điểm của phương pháp này là gì? Nếu bạn code một chương trình lớn, bạn không kiểm soát chức năng này nằm ở đối tượng nào, bạn có thể tạo ra rất nhiều phần code trùng lặp trong chương trình của bạn. Ví dụ bạn đã tạo chức năng “Đến trường học” trong Học Sinh rồi, nhưng qua Lớp Trưởng bạn lại tiếp tục tạo lại, chương trình có thể không sai, nhưng code của bạn sẽ không tối ưu lắm và rất khó quản lý.</p>
+      <img src="/assets/images/09-procedural.png" class="picture-center">      
+
+      <p><strong>Nhược điểm của phương pháp này là gì?</strong></p>
+        
+      <p>Nếu bạn code một chương trình lớn, bạn không kiểm soát chức năng này nằm ở đối tượng nào, bạn có thể tạo ra rất nhiều phần code trùng lặp trong chương trình của bạn. Ví dụ bạn đã tạo chức năng “Đến trường học” trong Học Sinh rồi, nhưng qua Lớp Trưởng bạn lại tiếp tục tạo lại, chương trình có thể không sai, nhưng code của bạn sẽ không tối ưu lắm và rất khó quản lý.</p>
+
+      <p>Tạm thời hôm nay đến đây thui, hẹn mọi người lần sau!</p>
 
       <div class="post-closing">
-        <span class="sign-off">Tạm thời hôm nay đến đây thui, hẹn mọi người lần sau!</span>
+        <span class="sign-off">Tùy vào nhu cầu và scale của dự án, mỗi loại ngôn ngữ sẽ mang lại giá trị khác nhau</span>
         <span class="post-date">25 Tháng 6, 2024</span>
       </div>
 
