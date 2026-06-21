@@ -28,7 +28,7 @@
   },
   {
     "category": "boolean",
-    "file": "04-it-will-work-somehow.html",
+    "file": "04-it-will-work-somehow-in-the-future.html",
     "title": "04. It will work somehow in the future",
     "isoDate": "2024-02-24",
     "date": "February 24, 2024",
@@ -54,7 +54,7 @@
     "excerpt": "My very first time sitting in the interviewer's seat and the lessons I learned about cultural fit, honesty, and communication skills."
   },
   {
-    "category": "boolean",
+    "category": "string",
     "file": "07-be-rationally-emotional.html",
     "title": "07. Be rationally emotional",
     "isoDate": "2024-05-20",

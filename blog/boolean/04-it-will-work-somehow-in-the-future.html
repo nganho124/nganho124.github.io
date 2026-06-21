@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="translations" content="vi">
+  <title>It will work somehow in the future — Ngan Ho</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;1,400;1,500&family=DM+Sans:wght@300;400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/css/style.css"/>
+</head>
+<body>
+
+  <div id="nav-placeholder"></div>
+
+  <article>
+    <header class="post-header">
+      <a class="post-category" href="/blog/boolean/">Boolean</a>
+      <h1 class="post-title">04. It will work somehow in the future</h1>
+      <p class="post-subtitle">A perspective about stepping out of my comfort zone with the belief that everything will “make sense” eventually.</p>
+      <div class="post-meta">
+        <span>Ngan Ho</span>
+        <span class="dot">·</span>
+        <span>February 24, 2024</span>
+        <span class="dot">·</span>
+        <span>3 min read</span>
+      </div>
+    </header>
+
+    <div class="post-body">
+
+      <p>I once shared Steve Jobs' famous quote about "connecting the dots"—the idea that one day when we look back, the things we’ve done will connect and we will see that it finally <em>makes sense</em>. 
+        This concept ties closely into a mindset I have whenever I face something completely new:</p>
+      
+      <blockquote>
+        <p>“It will work somewhere, some day in the future”</p>
+      </blockquote>
+
+      <p>In my life, I have relied heavily on this way of thinking to:</p>
+
+      <ol style="margin-left: 20px; margin-bottom: 1.7em; color: var(--ink);">
+        <li style="margin-bottom: 8px;">Push myself out of my comfort zone to learn new things, even when I can't quite see their immediate application at the moment.</li>
+        <li>Adjust my attitude when learning and practicing these things, finding the sweet spot between working to earn a living vs. pursuing a personal hobby.</li>
+      </ol>
+
+      <p>One specific case this mindset to apply is when I work in a small team</p>
+
+
+      <h2 class="section-heading">Context of the story</h2>
+
+      <p>If you have ever worked in a small company, you will quickly realize that you often have to tackle tasks that fall outside your official scope of work. 
+        Depending on the nature of those tasks and your personal career orientation, you might feel completely fine with it, or not ok at all.</p>
+
+      <p>My university major only included about 5% of subjects related to programming language concepts. Yet, in my role as an Analyst within a small consulting team, I ended up handling several developer tasks 
+        (to be fair, it wasn't advanced enough to land me a dev role at an IT firm, but it was certainly more advanced than what is typically expected from a data analyst working solely with dashboards).</p>
+
+      <p>One of these tasks was building an end-to-end web app using Streamlit. 
+        In short, it's a python-based web app that displays interactive dashboards and allows users to filter and visualize data. I'll write a more detailed documentation about it in a future document hehe.</p>
+
+      <p>When I first received this task, I felt a bit overwhelmed because it required a brand new skill set, and I had no idea how it would contribute to my personal development or career. 
+        But being a (trying-to-be) optimistic girl, I figured it was just like the philosophy of this blog: just do it, and the skill will come in handy when needed. 
+        And today, I actually ended up using that exact knowledge to adjust the styling format of this blog.</p>
+      
+      <p>Just a quick counter-argument here: I don't think every out-of-scope task is automatically ok and fine. I'll save that topic for a separate discussion later down the road.</p>
+      
+      <h2 class="section-heading">Example from my old blog</h2>
+
+      <h3 style="font-family: var(--serif); font-weight: 500; font-size: 1.1rem; margin-top: 32px; margin-bottom: 12px;">Problem</h3>
+
+      <p>I use the Elementor plug-in in WordPress to display my latest posts on the website's homepage like this. 
+        Because the length of each post title is different, the display banners end up misaligned - which drives me crazy :v</p>
+
+      <img src="/assets/images/04-problem.png" class="picture-center">
+
+      <p>When building the web app using Streamlit, I ran into the exact same problem where two structural layout blocks would not align. 
+        The great common denominator between Streamlit and Elementor is that both allow users to inject custom CSS to better format and polish the website. 
+        So, here is how I went about adjusting the CSS inside Elementor.</p>
+
+      <h3 style="font-family: var(--serif); font-weight: 500; font-size: 1.1rem; margin-top: 32px; margin-bottom: 12px;">Instruction</h3>
+      
+      <ul>
+        <li>In the widget editing mode, click on Advanced > Edit Widget HTML</li>
+        <img src="/assets/images/04-advanced-html.png" class="picture-center">
+        <li>Open the CSS tab in the editor screen; a widget is a collection of multiple internal items marked by CSS codes.</li>
+        <img src="/assets/images/04-post-carousel.png" class="picture-center">
+        <li>To find the CSS code of the outer border element that needs adjusting, go back to the blog page and press F12 to open the browser's developer tools. Click on the Select Element button, which allows you to hover over and click an element to reveal its CSS.</li>
+        <img src="/assets/images/04-dev-mode.png" class="picture-center">
+        <li>Adjust the CSS and observe the changes to that element until you achieve the desired outcome. For example, here I added <code>height: 400px</code>, and all elements are now perfectly aligned.</li>
+        <img src="/assets/images/04-css.png" class="picture-center">
+        <li>Since the CSS adjustments made in Dev mode will reset when you refresh the page, you need to add them to Elementor's Custom CSS to save your changes.</li>
+        <img src="/assets/images/04-save-css.png" class="picture-center">
+        <li>Abracadabra 💥 ~ Everything is beautiful now ~~</li>
+        <img src="/assets/images/04-result.png" class="picture-center">
+      </ul>
+
+      <p><b>Conclusion:</b></p>
+      <ul>
+        <li>There are some tasks we have to do right now without knowing what they are for, but one day, somewhere down the line, they will prove useful.</li>
+        <li>When we are young, don’t think too much before you start working and learning on something</li>
+        <li>But of course, under circumstances where time and resources are limited, we must balance and prioritize our tasks so we don't spread ourselves too thin or do things completely without direction.</li>
+      </ul>
+
+        <div class="post-closing">
+        <span class="sign-off">Just do it, time will give you the answer</span>
+        <span class="post-date">February 24, 2024</span>
+      </div>
+
+    </div>
+  </article>
+
+  <div id="footer-placeholder"></div>
+  <script src="/assets/js/components.js"></script>
+
+</body>
+</html>
