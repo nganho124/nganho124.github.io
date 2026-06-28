@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="translations" content="vi">
+  <title>Programming is like, continuously teaching to yourself — Ngan Ho</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;1,400;1,500&family=DM+Sans:wght@300;400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/css/style.css"/>
+</head>
+<body>
+
+  <div id="nav-placeholder"></div>
+
+  <article>
+    <header class="post-header">
+      <a class="post-category" href="/blog/numeric/">Numeric</a>
+      <h1 class="post-title">09. Programming is like, continuously teaching to yourself</h1>
+      <p class="post-subtitle">Programming is actually a process of self-learning. Because technology changes incredibly fast, what schools provide is merely a foundation for us to take our own next steps.</p>
+      <div class="post-meta">
+        <span>Ngan Ho</span>
+        <span class="dot">·</span>
+        <span>December 15, 2024</span>
+        <span class="dot">·</span>
+        <span>5 min read</span>
+      </div>
+    </header>
+
+    <div class="post-body">
+
+      <p>I recently took a course on the basics of programming covering Object-Oriented Programming. 
+        At the end of the course, right before the final exam, our instructor gave us an encouraging piece of advice:</p>
+
+      <blockquote>
+        <p>“Programming is always like teaching to yourself. So I bring you the basic concept to empower you to learn and develop more.”</p>
+      </blockquote>
+
+      <p>This means that programming is ultimately a continuous process of self-education. 
+        Because technologies in the industry shift rapidly, schools only equip us with foundational knowledge that can be adapted to any language or stack. 
+        From there, implementing and updating our technical skills is something we must learn on our own. 
+        I found this quote so inspiring that I used it as the title of this post—even though our primary focus today will be comparing two common programming paradigms: Object-Oriented and Procedural programming.</p>
+
+      <h2 class="section-heading">What are these two paradigms and how do they differ?</h2>
+
+      <p><strong>Object-Oriented Programming (OOP):</strong></p>
+      <ul>
+        <li>Your code structure, such as its internal methods, is built entirely around "objects".</li>
+        <li>If I define an object as a data table, then the computation logic I want to run on that table will be built specifically into it.</li>
+        <li>A completely separate object, like a standalone number, won't be able to utilize that data table's specific functions unless an explicit relationship is defined between them.</li>
+        <li>Common Object-Oriented languages include: C++, Java, Python, etc.</li>
+      </ul>
+
+      <p><strong>Procedural Programming:</strong></p>
+      <ul>
+        <li>The program layout is structured sequentially around functions or procedures.</li>
+        <li>For example, if I want to add up all input values together, I would build a generic <code>sum()</code> function.</li>
+        <li>Unless I set up custom constraints, all objects and variables can globally share and call this <code>sum()</code> function.</li>
+        <li>Common Procedural or functional-leaning languages include: C, Pascal, R, etc.</li>
+      </ul>
+
+
+      <h2 class="section-heading">What are the pros and cons of each?</h2>
+
+      <h3 style="font-family: var(--serif); font-weight: 500; font-size: 1.1rem; margin-top: 32px; margin-bottom: 12px;">Object-Oriented Programming</h3>
+
+      <p>Before jumping into the core benefits of OOP, let's introduce a special capability of objects: inheritance.</p>
+
+      <p>For instance, let's say I have a base object called "Student". The basic behaviors of a student might include:</p>
+      <ul>
+        <li>Going to school</li>
+        <li>Listening to lectures</li>
+        <li>Doing homework</li>
+      </ul>
+
+      <p>Now, I want to create a second object called "Class Monitor". 
+        A Class Monitor needs all the standard behaviors of a regular student, but possesses a unique extra responsibility: Managing the class.</p>
+
+      <img src="/assets/images/09-OOP-en.png" class="picture-center">
+
+      <p>In an OOP environment, to execute this design seamlessly, I would:</p>
+      <ol style="margin-left: 20px; margin-bottom: 16px;">
+        <li>Create the Student class.</li>
+        <li>Define the standard methods within the Student class.</li>
+        <li>Create the Class Monitor class as a subclass of Student, allowing it to automatically "inherit" all methods from Student.</li>
+        <li>Add the specific "Managing class" method uniquely to the Class Monitor class.</li>
+      </ol>
+
+      <p>From this example, you can see that the distinct advantage of OOP is reusability. 
+        Instead of rewriting all the shared student functions inside Class Monitor, we can simply leverage inheritance. 
+        In a massive, complex software system, this approach yields huge benefits by eliminating duplicate code blocks across different but related entities.</p>
+
+      <p>So, what's the drawback? 
+        Because entities in an OOP codebase are deeply interconnected, figuring out exactly what functions an object possesses requires tracing back through the code of all its parent objects. 
+        And if you weren't the one who originally wrote those classes? 
+        We all know how painful reading someone else's structural code can be haha :))</p>
+
+      <h3 style="font-family: var(--serif); font-weight: 500; font-size: 1.1rem; margin-top: 32px; margin-bottom: 12px;">Procedural Programming</h3>
+
+      <p>In contrast to OOP, if we look at the same scenario from a procedural perspective, 
+        I would simply write a standalone function called <code>go_to_school()</code> 
+        If I want both the Student and the Class Monitor to be at school, I apply that function directly to both of them. 
+        The <code>go_to_school()</code> action exists independently rather than living inside the definition of a specific student class.</p>
+
+      <p><strong>What are the advantages of this method?</strong></p> 
+      <p>When writing procedural code, you only need to focus on what operations you want to execute on your data. 
+        As a result, your script aligns perfectly with your natural stream of consciousness. 
+        Think of it like writing an essay: you can simply pick up your pen and write down descriptions exactly as they come to mind. 
+        In contrast, if you were using OOP, you would first have to formally categorize whether your essay is descriptive or argumentative, as each type dictates a strict structural outline you are forced to follow from the start.</p>
+
+      <p>To give you an idea, here is a snippet of procedural code I wrote in R to calculate transport logistics costs for City B. 
+        It might look intimidating at a glance, but when building it, I simply scripted it block by block and then chained them together sequentially. 
+        The great thing about this approach is that no matter how complex your mathematical calculations get, as long as you follow a procedural flow, everything connects together intuitively.</p>
+
+      <img src="/assets/images/09-procedural.png" class="picture-center">      
+
+      <p><strong>What are the disadvantages of this method?</strong></p>
+        
+      <p>If you are developing a large-scale software system, since functions are not modularly encapsulated within specific objects, you can easily end up creating massive amounts of redundant code. 
+        For example, if you manually write the logic for "going to school" for a standard student, and then completely rewrite that exact logic block again for the class monitor, your program will still run correctly, but your code will be unoptimized and incredibly difficult to manage down the line.</p>
+
+      <p>That's all for today, see you all next time!</p>
+
+      <div class="post-closing">
+        <span class="sign-off">Depending on the project scope and constraints, each paradigm brings its own unique value.</span>
+        <span class="post-date">June 25, 2024</span>
+      </div>
+
+    </div>
+  </article>
+
+  <div id="footer-placeholder"></div>
+  <script src="/assets/js/components.js"></script>
+
+</body>
+</html>

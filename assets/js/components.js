@@ -44,23 +44,50 @@ async function loadNav() {
 
   // Read declared translations from the page's meta tag
   const meta = document.querySelector('meta[name="translations"]');
-  const available = ['en', ...(meta ? meta.content.split(',') : [])];
-
-  // Only show toggle if there's more than one language available
-  if (available.length <= 1) return;
+  
+  // Create an array of explicitly supported languages for this post
+  const supportedLanguages = [currentLang];
+  if (meta && meta.content && meta.content !== 'none') {
+    meta.content.split(',').forEach(lang => supportedLanguages.push(lang.trim()));
+  }
 
   const enPath = getEnPath(current);
   const blogToggle = document.getElementById('lang-blog');
   document.getElementById('lang-default').style.display = 'none';
   blogToggle.style.display = '';
 
-  blogToggle.innerHTML = available.map((lang, i) => `
-    ${i > 0 ? '<span>/</span>' : ''}
-    <a href="${getLangPath(enPath, lang)}"
-       class="${lang === currentLang ? 'active' : ''}">
-      ${LANG_LABELS[lang]}
-    </a>
-  `).join('');
+  // Define both languages to always display the structure "EN / VI"
+  const allLanguages = ['en', 'vi'];
+
+  blogToggle.innerHTML = allLanguages.map((lang, i) => {
+    const separator = i > 0 ? '<span class="lang-separator">/</span>' : '';
+    
+    // Condition 1: It's the language the user is currently reading
+    if (lang === currentLang) {
+      return `
+        ${separator}
+        <a href="${getLangPath(enPath, lang)}" class="active">
+          ${LANG_LABELS[lang]}
+        </a>
+      `;
+    }
+    
+    // Condition 2: It's the other language, and it IS available/translated
+    if (supportedLanguages.includes(lang)) {
+      return `
+        ${separator}
+        <a href="${getLangPath(enPath, lang)}">
+          ${LANG_LABELS[lang]}
+        </a>
+      `;
+    }
+    
+    // Condition 3: It's the other language, but it has NO translation yet
+    return `
+      ${separator}
+      <span class="lang-disabled">${LANG_LABELS[lang]}</span>
+    `;
+  }).join('');
 }
 
 async function loadPostList(containerId, category) {
