@@ -9,7 +9,8 @@
   --text: #111111;
   --muted: #888888;
   --hint: #aaaaaa;
-  --accent: #e05a2b;
+  /* --accent: #D73535; */
+  --accent: #D0311E;
   --accent-dim: rgba(224, 90, 43, 0.08);
 
   /* Blog-specific colors (used in post pages) */
