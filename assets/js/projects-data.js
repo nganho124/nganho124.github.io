@@ -4,8 +4,9 @@ const projects = {
       href: "/projects/sc-dashboard/",
       tag: "BI · Dashboard",
       title: "SC Dashboard",
-      desc: "Interactive Power BI dashboard tracking regional KPIs...",
-      tools: ["Power BI", "SQL", "DAX"]
+      desc: "Interactive Data Studio dashboard tracking regional KPIs...",
+      tools: ["Data Studio", "SQL"],
+      image: "/assets/images/projects/scd_executive_summary.png"
     }
   ],
   // "Data Science & ML": [

@@ -34,7 +34,9 @@ Object.entries(projects).forEach(([category, items], i) => {
   
   const cards = items.map(p => `
     <a href="${p.href}" class="project-card">
-      <div class="project-card-image">Project Preview</div>
+      <div class="project-card-image">
+        ${p.image ? `<img src="${p.image}" alt="${p.title}" loading="lazy">` : "Project Preview"}
+      </div>
       <div class="project-card-body">
         <span class="project-tag">${p.tag}</span>
         <h3>${p.title}</h3>

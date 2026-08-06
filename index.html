@@ -14,28 +14,26 @@
 <main>
   <section class="hero container">
     <div class="hero-grid">
-      <!-- LEFT: existing content -->
-      <div class="hero-left">
-        <div class="hero-kicker">
-          <div class="hero-kicker-line"></div>
-          <p class="hero-eyebrow">MSc Information Systems · Data & BI</p>
-        </div>
-        <h1>Turning data<br>into <span class="serif-part">decisions.</span></h1>
-        <p class="hero-sub">Data-driven problem solver building end-to-end solutions at the intersection of business intelligence, analytics, and digital product development.</p>
-        <div class="cta-group">
-          <a href="/projects/" class="btn btn-primary">View Projects →</a>
-          <a href="/resume.html" class="btn btn-outline">Resume</a>
-        </div>
-        <div class="hero-tags">
-          <span class="hero-tag">Python</span>
-          <span class="hero-tag">SQL</span>
-          <span class="hero-tag">Power BI</span>
-          <span class="hero-tag">Tableau</span>
-          <!-- <span class="hero-tag">dbt</span> -->
-          <span class="hero-tag">scikit-learn</span>
-          <!-- <span class="hero-tag">Airflow</span> -->
+      <!-- LEFT: avatar -->
+      <div class="hero-avatar-wrap">
+        <div class="hero-avatar">
+          <img src="/assets/images/HoBaoNgan.png" alt="Your Name">
         </div>
       </div>
+
+      <!-- RIGHT: content -->
+      <div class="hero-left">
+        <h1 class="hero-name">Bao Ngan Ho</h1>
+        <p class="hero-role">Data Analyst &middot; Simulation & Analytics</p>
+
+        <p class="hero-sub">
+          I design decision-support tools and data-driven solutions — proven across
+          supply chain networks worth millions in savings — now pursuing an
+          <strong>M.S. in Information Systems</strong> and expanding into AI and
+          digital transformation.
+        </p>
+      </div>
+    </div>
   </section>
 
   <hr class="divider"/>
@@ -95,7 +93,9 @@
   Object.values(projects).flat().forEach(p => {
     grid.innerHTML += `
       <a href="${p.href}" class="project-card">
-        <div class="project-card-image">Project Preview</div>
+        <div class="project-card-image">
+          ${p.image ? `<img src="${p.image}" alt="${p.title}" loading="lazy">` : "Project Preview"}
+        </div>
         <div class="project-card-body">
           <span class="project-tag">${p.tag}</span>
           <h3>${p.title}</h3>
