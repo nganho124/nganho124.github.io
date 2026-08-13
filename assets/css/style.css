@@ -948,7 +948,7 @@ a.post-category:hover {
   font-weight: 500;
   letter-spacing: -0.02em;
   color: var(--text);
-  margin-bottom: 0.5rem;
+  margin-bottom: 1rem;
 }
 
 .hero-role {
@@ -958,7 +958,7 @@ a.post-category:hover {
   letter-spacing: 0.06em;
   text-transform: uppercase;
   color: var(--accent);
-  margin-bottom: 1.1rem;
+  margin-bottom: 1rem;
 }
 
 .hero-sub {
