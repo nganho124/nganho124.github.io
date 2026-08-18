@@ -107,15 +107,15 @@ main { padding-top: 72px; }
   padding: 2rem 1.25rem;
 }
 
-section { padding: 5rem 0; }
+section { padding: 2rem 0; }
 
 /* ── HERO ── */
 .hero {
-  min-height: calc(100vh - 72px);
+  min-height: calc(80vh - 72px);
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding: 5rem 2.5rem;
+  padding: 3rem 2rem;
   position: relative;
   background-image: url('/assets/images/hero-bg.jpg');
   background-size: cover;
@@ -439,7 +439,7 @@ hr.divider {
 
 /* ── PAGE HERO ── */
 .page-hero { 
-  padding: 4.5rem 0 3rem; 
+  padding: 3rem 0 3rem; 
   border-bottom: 0.5px solid var(--border); 
   margin-bottom: 4rem; }
 
@@ -494,13 +494,13 @@ hr.divider {
   height: 100%;
   object-fit: cover;
   opacity: 0;
-  animation: avatarSlide 12s infinite;
+  animation: avatarSlide 15s infinite;
 }
 
 .about-sidebar .avatar img:nth-child(1) { animation-delay: 0s; }
-.about-sidebar .avatar img:nth-child(2) { animation-delay: 3s; }
-.about-sidebar .avatar img:nth-child(3) { animation-delay: 6s; }
-.about-sidebar .avatar img:nth-child(4) { animation-delay: 9s; }
+.about-sidebar .avatar img:nth-child(2) { animation-delay: 5s; }
+.about-sidebar .avatar img:nth-child(3) { animation-delay: 10s; }
+.about-sidebar .avatar img:nth-child(4) { animation-delay: 15s; }
 
 @keyframes avatarSlide {
   0%          { opacity: 0; }
@@ -952,12 +952,19 @@ a.post-category:hover {
 }
 
 .hero-avatar {
+  margin-left: 20px;
   width: 200px;
   height: 200px;
   border-radius: 50%;
   overflow: hidden;
   border: 1px solid var(--border-strong);
   box-shadow: 0 0 0 6px var(--accent-dim);
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.hero-avatar:hover {
+  box-shadow: 0 0 0 6px var(--accent-dim), 0 0 25px 8px var(--accent-dim);
+  transform: scale(1.03);
 }
 
 .hero-avatar img {
@@ -983,7 +990,7 @@ a.post-category:hover {
   letter-spacing: 0.06em;
   text-transform: uppercase;
   color: var(--accent);
-  margin-bottom: 1rem;
+  margin: 0.5rem 0.5rem 0 0;
 }
 
 .hero-sub {
@@ -993,7 +1000,7 @@ a.post-category:hover {
   color: var(--muted);
   line-height: 1.85;
   /* max-width: 46ch; */
-  margin-bottom: 1.75rem;
+  margin: 0.5rem 0rem ;
 }
 
 .hero-links {
