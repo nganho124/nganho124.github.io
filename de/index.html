@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Ngan Ho · Data & BI Portfolio</title>
+  <link rel="icon" type="image/x-icon" href="/assets/images/favicon.ico"/>
+  <link rel="stylesheet" href="/assets/css/style.css"/>
+</head>
+<body>
+
+<div id="nav-placeholder"></div>
+
+<main>
+  <section class="hero container">
+    <div class="hero-grid">
+      <!-- LEFT: avatar -->
+      <div class="hero-avatar-wrap">
+        <div class="hero-avatar">
+          <img src="/assets/images/HoBaoNgan.png" alt="Your Name">
+        </div>
+      </div>
+
+      <!-- RIGHT: content -->
+      <div class="hero-left">
+        <h1 class="hero-name">Ngan Ho</h1>
+        <p class="hero-role">Datenanalystin &middot; Analytics, Modellierung & Simulation</p>
+        <p class="hero-sub">
+          In Vietnam habe ich an strategischen Projekten in den Bereichen operative Leistungsfähigkeit und Netzwerkdesign 
+          für Kunden in Australien und Südostasien gearbeitet. Dabei nutzte ich operative Daten, 
+          um Effizienzpotenziale zu identifizieren oder zukünftige Lieferkettennetzwerke neu zu gestalten.<br>
+          Derzeit absolviere ich ein Masterstudium in Wirtschaftsinformatik in Deutschland, 
+          um mein Wissen über digitale Lösungen für den operativen Bereich zu vertiefen.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider"/>
+
+  <section class="container">
+    <p class="section-label">Ausgewählte Arbeiten</p>
+    <h2 class="section-title">Projekt-Highlights</h2>
+    <p class="section-desc">Eine Auswahl an Data-Science-, BI- und Modellierung-Projekten aus meinem Studium und meiner Berufspraxis</p>
+    <div class="scroll-wrapper">
+      <button class="scroll-btn left" onclick="scrollProjects(-1)">←</button>
+      <div class="projects-grid" id="projectsGrid"></div>
+      <button class="scroll-btn right" onclick="scrollProjects(1)">→</button>
+    </div>
+    <div style="margin-top:2rem">
+      <a href="/projects/" class="btn btn-outline">Alles Projecten →</a>
+    </div>
+  </section>
+
+  <hr class="divider"/>
+
+  <section class="container">
+    <p class="section-label">Beiträge</p>
+    <h2 class="section-title">Aus dem <em>Blog</em></h2>
+    <p class="section-desc">Nach Python-Datentypen strukturierte Notizen – denn am Ende sind alles Daten</p>
+    <div class="blog-grid">
+      <a href="/blog/numeric/" class="blog-category-card">
+        <div class="type-label">int / float</div>
+        <h3>Numerisch</h3>
+        <p>Fachwissen & Daten-Insights</p>
+      </a>
+      <a href="/blog/boolean/" class="blog-category-card">
+        <div class="type-label">bool</div>
+        <h3>Boolesch</h3>
+        <p>Perspektiven & Denkweisen</p>
+      </a>
+      <a href="/blog/dictionary/" class="blog-category-card">
+        <div class="type-label">dict</div>
+        <h3>Dictionary</h3>
+        <p>Geschicten aus Arbeit & Studium</p>
+      </a>
+      <a href="/blog/string/" class="blog-category-card">
+        <div class="type-label">str</div>
+        <h3>String</h3>
+        <p>Musik, Kunst & spontane Gedanken</p>
+      </a>
+    </div>
+  </section>
+</main>
+
+<div id="footer-placeholder"></div>
+
+<script src="/assets/js/projects-data.js"></script>
+<script src="/assets/js/main.js"></script>
+<script src="/assets/js/components.js"></script>
+<script>
+  const grid = document.getElementById("projectsGrid");
+  Object.values(projects).flat().forEach(p => {
+    grid.innerHTML += `
+      <a href="${p.href}" class="project-card">
+        <div class="project-card-image">
+          ${p.image ? `<img src="${p.image}" alt="${p.title}" loading="lazy">` : "Project Preview"}
+        </div>
+        <div class="project-card-body">
+          <span class="project-tag">${p.tag}</span>
+          <h3>${p.title}</h3>
+          <p>${p.desc}</p>
+          <div class="project-tools">
+            ${p.tools.map(t => `<span class="tool-badge">${t}</span>`).join("")}
+          </div>
+        </div>
+      </a>
+    `;
+  });
+</script>
+</body>
+</html>
