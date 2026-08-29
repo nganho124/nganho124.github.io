@@ -6,6 +6,27 @@
   <title>Supply Chain P&L Dashboard · Ngan Ho</title>
   <link rel="icon" type="image/x-icon" href="/assets/images/favicon.ico"/>
   <link rel="stylesheet" href="/assets/css/style.css"/>
+  <style>
+    main.container { counter-reset: section-counter; }
+    h2.numbered-section::before {
+      counter-increment: section-counter;
+      content: counter(section-counter) ". ";
+    }
+    .data-disclaimer {
+      display: flex;
+      gap: 0.75rem;
+      align-items: flex-start;
+      background: rgba(255, 196, 0, 0.08);
+      border: 1px solid rgba(255, 196, 0, 0.35);
+      border-radius: 8px;
+      padding: 0.9rem 1.1rem;
+      margin: 1.25rem 0 2rem;
+      font-size: 0.92rem;
+      line-height: 1.5;
+    }
+    .data-disclaimer .icon { flex-shrink: 0; font-size: 1.1rem; }
+    .data-disclaimer strong { font-weight: 600; }
+  </style>
 </head>
 <body>
 
@@ -27,17 +48,18 @@
 
 <main class="container">
 
-  <!-- ── Hero ── -->
+  <!-- ── 1. Hero ── -->
   <div class="project-hero">
     <p class="breadcrumb">
       <a href="/projects/">Projects</a> &nbsp;/&nbsp; Supply Chain P&L Dashboard
     </p>
-    <h1>Supply Chain P&L Dashboard</em></h1>
+    <h1>Supply Chain P&L Dashboard</h1>
     <p class="subtitle">
-      A BigQuery + dbt data pipeline feeding a Looker Studio dashboard that gives
-      finance and supply chain teams facility-level, customer-level, and
-      channel-level profitability — down to EBITAI margin — for an EU dairy
-      network, refreshed automatically instead of rebuilt by hand in Excel.
+      Most supply chain finance teams can tell you total cost — but not
+      <em>which facility, product, or customer</em> is actually driving it.
+      I built an automated pipeline and dashboard that answers that question
+      for a €3.8B EU dairy network, down to EBITAI margin per sales order,
+      refreshed automatically instead of rebuilt by hand in Excel.
     </p>
     <div class="cta-group">
       <a href="https://datastudio.google.com/reporting/ba72ccf7-1c00-48c1-aebf-425cd63143d3" target="_blank" class="btn btn-primary">
@@ -71,34 +93,7 @@
     </div>
   </div>
 
-  <!-- ── Description ── -->
-  <div class="project-description">
-    <h2>The Business Problem</h2>
-    <p>
-      Supply chain finance teams typically know total cost, but not
-      <em>where</em> it comes from — which facility, which product, which
-      customer is actually profitable once transport, storage, and inventory
-      carrying cost are allocated correctly. That allocation is usually done
-      manually per report, which means it's slow, inconsistent between
-      analysts, and rarely gets down to the order level.
-    </p>
-    <p>
-      This project replaces that manual process with a single automated
-      pipeline that takes raw ERP-style source tables — facilities, customers,
-      products, transport rate cards, sales orders, internal transfers, and
-      inventory — and produces one profitability record per sales order (about
-      200k rows), fully allocated down to EBITAI.
-    </p>
-
-    <h2 style="margin-top: 2.5rem;">What It Enables</h2>
-    <ul>
-      <li>Executives can filter Sales Value, EBITAI, and margin by country, channel, and date range in seconds instead of waiting for a report cycle.</li>
-      <li>Network planners can see cost breakdown (handling, storage, transport) by facility to spot which sites are structurally expensive.</li>
-      <li>Commercial teams can rank customers and channels by EBITAI margin to find which accounts are quietly unprofitable despite high sales volume.</li>
-    </ul>
-  </div>
-
-  <!-- ── Impact strip (illustrative dashboard figures) ── -->
+  <!-- ── Impact strip ── -->
   <div class="impact-strip">
     <div class="impact-stat">
       <div class="num">€3.8B</div>
@@ -118,15 +113,81 @@
     </div>
   </div>
 
-  <!-- ── Architecture ── -->
+  <!-- ── 2. The Business Problem ── -->
+  <div class="project-description">
+    <h2 class="numbered-section">The Business Problem</h2>
+    <p>
+      That allocation — transport, storage, and inventory carrying cost split
+      correctly across facility, product, and customer — is usually done
+      manually per report. That makes it slow, inconsistent between analysts,
+      and rarely granular enough to catch problems at the order level.
+    </p>
+    <p>
+      This project replaces that manual process with one automated pipeline
+      that takes raw ERP-style source tables — facilities, customers,
+      products, transport rate cards, sales orders, internal transfers, and
+      inventory — and produces one fully-allocated profitability record per
+      sales order (about 200k rows), all the way down to EBITAI. The result
+      feeds three dashboard views, each built for a different stakeholder:
+      executives get headline KPIs and trends, network planners get
+      facility-level cost breakdowns, and commercial teams get customer- and
+      channel-level margin rankings.
+    </p>
+  </div>
+
+  <!-- ── 3. Key Insights & Findings ── -->
+  <div class="project-description">
+    <h2 class="numbered-section">Key Insights & Findings</h2>
+    <p>
+      With the data unified and allocated consistently, a few patterns stood
+      out that weren't visible when cost and revenue lived in separate reports.
+    </p>
+
+    <h3 style="margin-top: 1.75rem;">Product category margin is not evenly spread</h3>
+    <p>
+      Ranked by EBITAI margin, <strong>Cheese</strong> is the strongest
+      category, followed by <strong>Powder</strong>, then
+      <strong>Butter</strong> — while <strong>UHT</strong> sits at a marginal
+      negative margin once transport, storage, and inventory carrying cost are
+      fully allocated. On a Sales Value view alone, UHT can look like a
+      healthy contributor; it's only once cost-to-serve is allocated properly
+      that the erosion shows up. That's a direct candidate for a pricing or
+      network review — the kind of "hidden bleeder" this dashboard was built
+      to surface.
+    </p>
+
+    <h3 style="margin-top: 1.75rem;">Sales volume peaks every July</h3>
+    <p>
+      Two clear spikes appear in the sales trend — <strong>July 2024</strong>
+      and <strong>July 2025</strong> — a repeatable seasonal pattern rather
+      than a one-off. For network planning, that's a useful signal: capacity,
+      staffing, and inventory positioning can be planned ahead of a known peak
+      instead of reacting to it.
+    </p>
+
+    <h3 style="margin-top: 1.75rem;">Channel margin tells a classic cost-to-serve story</h3>
+    <p>
+      <strong>Retail</strong> has the highest EBITAI margin, followed by
+      <strong>Foodservice</strong>. <strong>Manufacturing</strong> and
+      <strong>Wholesale</strong> sit at the bottom — these are large-order
+      customers with the negotiating leverage to secure lower prices, but the
+      dashboard shows that lower price isn't fully offset by lower cost-to-serve.
+      That's a useful data point for commercial teams weighing volume against
+      margin when negotiating these accounts.
+    </p>
+  </div>
+
+  <!-- ── 4. How the Numbers Get There ── -->
   <div class="architecture-section">
-    <h2>How the Numbers Get There</h2>
+    <h2 class="numbered-section">Allocation method</h2>
     <p>
       The pipeline is layered in dbt: a <strong>staging</strong> layer that
       renames raw tables 1:1 with no logic, an <strong>intermediate</strong>
       layer that does the actual cost allocation, and a single
       <strong>mart</strong> — <code>fct_sales_pnl</code> — that Looker Studio
-      reads from directly.
+      reads from directly. Each sales order's cost share uses a single
+      allocation ratio (its volume ÷ total facility/product volume), applied
+      consistently across every cost type.
     </p>
     <table class="layer-table">
       <thead>
@@ -140,7 +201,6 @@
         <tr><td>int_facility_cost_pool</td><td>Combines direct and inherited costs into one pool per facility/product</td></tr>
       </tbody>
     </table>
-    <p>Each sales order's cost share uses a single allocation ratio (its volume ÷ total facility/product volume), applied consistently across every cost type — then the P&L waterfall builds down from there:</p>
     <div class="waterfall-box">
       GM&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;= Sales Value − COGS<br>
       CBM&nbsp;&nbsp;&nbsp;&nbsp;= GM − (Transport + Handling + Storage/Overhead)<br>
@@ -150,9 +210,9 @@
     </div>
   </div>
 
-  <!-- ── Screenshot / Demo ── -->
+  <!-- ── 5. Preview & Tools ── -->
   <div class="demo-section">
-    <h2>Preview</h2>
+    <h2 class="numbered-section">Preview</h2>
     <p class="demo-caption">Three views built on the same fct_sales_pnl mart — each answers a different stakeholder question.</p>
 
     <div class="demo-frame">
@@ -172,18 +232,27 @@
         <div class="thumb-desc">Account-level EBITAI margin, EBITAI by channel, and a sales-value-vs-margin scatter to flag high-volume, low-margin accounts.</div>
       </div>
     </div>
-  </div>
 
-  <!-- ── Tools Used ── -->
-  <div class="tools-section">
-    <h2>Tools & Technologies</h2>
-    <div class="tools-grid">
-      <span class="tool-badge-lg">🗄️ BigQuery</span>
-      <span class="tool-badge-lg">🔧 dbt Core</span>
-      <span class="tool-badge-lg">📊 Looker Studio</span>
-      <span class="tool-badge-lg">🐍 SQL</span>
-      <span class="tool-badge-lg">☁️ GCP</span>
+    <div class="tools-section" style="margin-top: 2.5rem;">
+      <h2>Tools & Technologies</h2>
+      <div class="tools-grid">
+        <span class="tool-badge-lg">🗄️ BigQuery</span>
+        <span class="tool-badge-lg">🔧 dbt Core</span>
+        <span class="tool-badge-lg">📊 Looker Studio</span>
+        <span class="tool-badge-lg">🐍 SQL</span>
+        <span class="tool-badge-lg">☁️ GCP</span>
+      </div>
     </div>
+  </div>
+  <div class="data-disclaimer">
+    <span class="icon">ℹ️</span>
+    <span>
+      <strong>Note on the data:</strong> all figures, insights, and dashboard
+      values here are built on a synthetic dataset I created based on my own
+      understanding and experience working on projects for a dairy company —
+      they do not reflect the real business results of any actual company.
+      This project is for study and portfolio purposes only.
+    </span>
   </div>
 
 </main>
