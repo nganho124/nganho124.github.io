@@ -1353,3 +1353,181 @@ a.post-category:hover {
   font-size: 0.9rem;
   opacity: 0.5;
 }
+
+/* - WIP css - */
+.wip-hero {
+  min-height: calc(70vh - 72px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 3rem 2rem;
+}
+
+.wip-content {
+  max-width: 560px;
+  text-align: center;
+}
+
+.wip-content .hero-kicker {
+  justify-content: center;
+}
+
+.wip-content h1 {
+  font-size: clamp(2rem, 4.5vw, 2.8rem);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  line-height: 1.1;
+  margin-bottom: 1rem;
+}
+
+.wip-content h1 .serif-part {
+  font-family: var(--serif);
+  font-style: italic;
+  font-weight: 400;
+  color: var(--muted);
+  letter-spacing: -0.01em;
+  font-size: 1em;
+}
+
+.wip-content p.wip-sub {
+  color: var(--muted);
+  font-size: 0.95rem;
+  line-height: 1.85;
+  max-width: 440px;
+  margin: 0 auto 3rem;
+}
+
+/* ── Track + train ── */
+
+.track-area {
+  position: relative;
+  width: 100%;
+  height: 84px;
+  overflow: hidden;
+}
+
+.rail {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 16px;
+  height: 1px;
+  background: var(--border-strong);
+}
+
+.rail::before {
+  content: "";
+  position: absolute;
+  left: 0; right: 0; top: -5px;
+  height: 1px;
+  background-image: repeating-linear-gradient(
+    to right,
+    var(--border-strong) 0, var(--border-strong) 8px,
+    transparent 8px, transparent 20px
+  );
+  opacity: 0.5;
+}
+
+.train {
+  position: absolute;
+  bottom: 16px;
+  left: -140px;
+  animation: chug 9s linear infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .train { animation: none; left: 40%; }
+  .smoke { animation: none; opacity: 0; }
+}
+
+@keyframes chug {
+  0%   { left: -140px; }
+  100% { left: 100%; }
+}
+
+.locomotive {
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+}
+
+.car-body {
+  width: 58px;
+  height: 30px;
+  background: var(--accent);
+  border-radius: 3px 8px 2px 2px;
+  position: relative;
+}
+
+.car-body::after {
+  content: "";
+  position: absolute;
+  top: 6px;
+  left: 7px;
+  width: 14px;
+  height: 10px;
+  background: var(--bg);
+  border-radius: 1px;
+  opacity: 0.9;
+}
+
+.cab {
+  width: 18px;
+  height: 40px;
+  background: var(--border-strong);
+  border-radius: 2px 2px 0 0;
+  margin-right: -2px;
+}
+
+.wheels {
+  position: absolute;
+  bottom: -7px;
+  left: 4px;
+  display: flex;
+  gap: 9px;
+}
+
+.wheel {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--border-strong);
+}
+
+.smoke {
+  position: absolute;
+  bottom: 40px;
+  left: 5px;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--hint);
+  opacity: 0;
+  animation: puff 2.2s ease-out infinite;
+}
+
+.smoke.s2 { animation-delay: 0.7s; left: 3px; }
+.smoke.s3 { animation-delay: 1.4s; left: 7px; }
+
+@keyframes puff {
+  0%   { opacity: 0.5; transform: translate(0, 0) scale(0.6); }
+  100% { opacity: 0; transform: translate(-16px, -30px) scale(1.5); }
+}
+
+.wip-status {
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.06em;
+  color: var(--hint);
+  text-transform: uppercase;
+  margin-top: 1.75rem;
+}
+
+.wip-status a {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+.wip-status a:hover {
+  text-decoration: underline;
+}
