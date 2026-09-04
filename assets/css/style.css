@@ -1170,7 +1170,7 @@ a.post-category:hover {
 .data-disclaimer {
   max-width: 720px;
   margin: 0.5rem auto 3.5rem;
-  padding: 2rem 0.5rem;
+  padding: 2rem 0.5rem 1.25rem 0;
 }
 
 

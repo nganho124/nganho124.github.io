@@ -26,6 +26,86 @@
     }
     .data-disclaimer .icon { flex-shrink: 0; font-size: 1.1rem; }
     .data-disclaimer strong { font-weight: 600; }
+
+    /* -- added for data-flow section -- */
+    .flow-diagram {
+      display: flex;
+      align-items: stretch;
+      gap: 0;
+      margin: 1.75rem 0;
+      flex-wrap: wrap;
+    }
+    .flow-stage {
+      flex: 1;
+      min-width: 150px;
+      border: 1px solid rgba(120,120,120,0.25);
+      border-radius: 10px;
+      padding: 1rem 1.1rem;
+      font-size: 0.9rem;
+    }
+    .flow-stage .stage-tag {
+      display: inline-block;
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      opacity: 0.65;
+      margin-bottom: 0.35rem;
+    }
+    .flow-stage h4 { margin: 0 0 0.4rem; font-size: 1rem; }
+    .flow-arrow {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0 0.6rem;
+      font-size: 1.3rem;
+      opacity: 0.4;
+    }
+    .why-not-box {
+      border-left: 3px solid rgba(255,120,120,0.6);
+      padding: 0.9rem 1.1rem;
+      margin: 1.25rem 0;
+      background: rgba(255,120,120,0.05);
+      border-radius: 0 8px 8px 0;
+    }
+    .why-not-box h4 { margin: 0 0 0.5rem; font-size: 0.95rem; }
+    .why-not-box ul { margin: 0; padding-left: 1.1rem; }
+    .why-not-box li { margin-bottom: 0.4rem; }
+
+    .metric-pill-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin: 1rem 0 1.5rem;
+    }
+    .metric-pill {
+      font-size: 0.82rem;
+      padding: 0.3rem 0.75rem;
+      border-radius: 999px;
+      border: 1px solid rgba(120,120,120,0.3);
+    }
+
+    .kpi-audience-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: 1rem;
+      margin: 1.5rem 0;
+    }
+    .kpi-audience-card {
+      border: 1px solid rgba(120,120,120,0.25);
+      border-radius: 10px;
+      padding: 1.1rem 1.2rem;
+    }
+    .kpi-audience-card h4 { margin: 0 0 0.5rem; }
+    .kpi-audience-card p { margin: 0 0 0.6rem; font-size: 0.9rem; }
+    .kpi-audience-card .decision {
+      font-size: 0.82rem;
+      opacity: 0.75;
+      font-style: italic;
+      margin-bottom: 0.6rem;
+    }
+    .kpi-audience-card ul { margin: 0; padding-left: 1.1rem; font-size: 0.88rem; }
+    .kpi-audience-card li { margin-bottom: 0.25rem; }
   </style>
 </head>
 <body>
@@ -48,18 +128,21 @@
 
 <main class="container">
 
-  <!-- ── 1. Hero ── -->
+  <!-- ── Hero ── -->
   <div class="project-hero">
     <p class="breadcrumb">
       <a href="/projects/">Projects</a> &nbsp;/&nbsp; Supply Chain P&L Dashboard
     </p>
     <h1>Supply Chain P&L Dashboard</h1>
     <p class="subtitle">
-      Most supply chain finance teams can tell you total cost — but not
-      <em>which facility, product, or customer</em> is actually driving it.
-      I built an automated pipeline and dashboard that answers that question
-      for a €3.8B EU dairy network, down to EBITAI margin per sales order,
-      refreshed automatically instead of rebuilt by hand in Excel.
+      Most supply chain and finance teams already have the transactional data
+      needed to see true cost-to-serve - it just isn't in a shape anyone can
+      report from. I designed and built the full path from raw operational
+      data to a decision-ready dashboard: a SQL-based ETL pipeline that turns
+      transactional records into an analytics-ready model, feeding a
+      dashboard that reports EBITAI margin down to the individual sales order
+      for a €3.8B EU dairy network - refreshed automatically instead of
+      rebuilt by hand in Excel every month.
     </p>
     <div class="cta-group">
       <a href="https://datastudio.google.com/reporting/ba72ccf7-1c00-48c1-aebf-425cd63143d3" target="_blank" class="btn btn-primary">
@@ -77,11 +160,11 @@
   <div class="project-meta">
     <div class="meta-item">
       <label>Category</label>
-      <span>Financial Analytics · Data Engineering</span>
+      <span>Data Management · Financial Analytics</span>
     </div>
     <div class="meta-item">
       <label>Type</label>
-      <span>dbt Pipeline + BI Dashboard</span>
+      <span>ETL Pipeline (OLTP → OLAP) + BI Dashboard</span>
     </div>
     <div class="meta-item">
       <label>Stack</label>
@@ -100,136 +183,197 @@
       <div class="label">Sales Value Tracked</div>
     </div>
     <div class="impact-stat">
-      <div class="num">€306M</div>
-      <div class="label">EBITAI</div>
+      <div class="num">~200K</div>
+      <div class="label">Sales Orders Modeled</div>
     </div>
     <div class="impact-stat">
-      <div class="num">8.01%</div>
-      <div class="label">EBITAI Margin</div>
+      <div class="num">3</div>
+      <div class="label">Stakeholder Views</div>
     </div>
     <div class="impact-stat">
-      <div class="num">561K</div>
-      <div class="label">Metric Tons Sold</div>
+      <div class="num">1</div>
+      <div class="label">Automated Refresh Cycle</div>
     </div>
   </div>
 
-  <!-- ── 2. The Business Problem ── -->
+  <!-- ── 1. The Business Problem ── -->
   <div class="project-description">
     <h2 class="numbered-section">The Business Problem</h2>
     <p>
-      That allocation — transport, storage, and inventory carrying cost split
-      correctly across facility, product, and customer — is usually done
-      manually per report. That makes it slow, inconsistent between analysts,
-      and rarely granular enough to catch problems at the order level.
+      Facility, product, and customer profitability data usually exists —
+      just scattered across transactional systems that were never designed
+      to be queried directly for reporting. So it gets pulled by hand:
+      exported from the ERP, allocated in Excel, rebuilt every reporting
+      cycle. That makes it slow, inconsistent between analysts, and rarely
+      granular enough to catch a problem at the individual order level.
     </p>
     <p>
-      This project replaces that manual process with one automated pipeline
-      that takes raw ERP-style source tables — facilities, customers,
-      products, transport rate cards, sales orders, internal transfers, and
-      inventory — and produces one fully-allocated profitability record per
-      sales order (about 200k rows), all the way down to EBITAI. The result
-      feeds three dashboard views, each built for a different stakeholder:
-      executives get headline KPIs and trends, network planners get
-      facility-level cost breakdowns, and commercial teams get customer- and
-      channel-level margin rankings.
+      This project replaces that manual cycle with an automated pipeline:
+      raw operational tables - sales orders, internal transfers, and inventory - flow
+      through a SQL transformation layer into one analytics-ready model, and
+      that model feeds a dashboard built for three different audiences:
+      executives get headline trends, network planners get facility-level
+      cost breakdowns, and commercial teams get customer- and channel-level
+      margin views.
     </p>
   </div>
 
-  <!-- ── 3. Key Insights & Findings ── -->
-  <div class="project-description">
-    <h2 class="numbered-section">Key Insights & Findings</h2>
-    <p>
-      With the data unified and allocated consistently, a few patterns stood
-      out that weren't visible when cost and revenue lived in separate reports.
-    </p>
+  <!-- Insights section temporarily removed — will be reinstated once the
+       data-flow narrative below has been reviewed. -->
 
-    <h3 style="margin-top: 1.75rem;">Product category margin is not evenly spread</h3>
-    <p>
-      Ranked by EBITAI margin, <strong>Cheese</strong> is the strongest
-      category, followed by <strong>Powder</strong>, then
-      <strong>Butter</strong> — while <strong>UHT</strong> sits at a marginal
-      negative margin once transport, storage, and inventory carrying cost are
-      fully allocated. On a Sales Value view alone, UHT can look like a
-      healthy contributor; it's only once cost-to-serve is allocated properly
-      that the erosion shows up. That's a direct candidate for a pricing or
-      network review — the kind of "hidden bleeder" this dashboard was built
-      to surface.
-    </p>
-
-    <h3 style="margin-top: 1.75rem;">Sales volume peaks every July</h3>
-    <p>
-      Two clear spikes appear in the sales trend — <strong>July 2024</strong>
-      and <strong>July 2025</strong> — a repeatable seasonal pattern rather
-      than a one-off. For network planning, that's a useful signal: capacity,
-      staffing, and inventory positioning can be planned ahead of a known peak
-      instead of reacting to it.
-    </p>
-
-    <h3 style="margin-top: 1.75rem;">Channel margin tells a classic cost-to-serve story</h3>
-    <p>
-      <strong>Retail</strong> has the highest EBITAI margin, followed by
-      <strong>Foodservice</strong>. <strong>Manufacturing</strong> and
-      <strong>Wholesale</strong> sit at the bottom — these are large-order
-      customers with the negotiating leverage to secure lower prices, but the
-      dashboard shows that lower price isn't fully offset by lower cost-to-serve.
-      That's a useful data point for commercial teams weighing volume against
-      margin when negotiating these accounts.
-    </p>
-  </div>
-
-  <!-- ── 4. How the Numbers Get There ── -->
+  <!-- ── 2. From Raw Transactions to an Analytics-Ready Model ── -->
   <div class="architecture-section">
-    <h2 class="numbered-section">Allocation method</h2>
+    <h2 class="numbered-section">From Raw Transactions to an Analytics-Ready Model</h2>
     <p>
-      The pipeline is layered in dbt: a <strong>staging</strong> layer that
-      renames raw tables 1:1 with no logic, an <strong>intermediate</strong>
-      layer that does the actual cost allocation, and a single
-      <strong>mart</strong> — <code>fct_sales_pnl</code> — that Looker Studio
-      reads from directly. Each sales order's cost share uses a single
-      allocation ratio (its volume ÷ total facility/product volume), applied
-      consistently across every cost type.
+      The source data starts life as OLTP - the operational tables an ERP
+      writes to every time an order is placed, a shipment moves, or
+      inventory updates.
     </p>
-    <table class="layer-table">
-      <thead>
-        <tr><th>Model</th><th>What it does</th></tr>
-      </thead>
-      <tbody>
-        <tr><td>int_facility_inventory_alloc</td><td>Rounds weekly inventory up to whole pallets, averages per facility/product, allocates storage, overhead, and inventory carrying cost by inventory share</td></tr>
-        <tr><td>int_transfer_costs</td><td>Combines internal transfers with rate-card and origin handling cost</td></tr>
-        <tr><td>int_outbound_totals</td><td>Total volume leaving each facility, across sales and transfers</td></tr>
-        <tr><td>int_inbound_inherited_costs</td><td>Pushes transport, handling, storage, and IOC down to the receiving facility from inbound transfers</td></tr>
-        <tr><td>int_facility_cost_pool</td><td>Combines direct and inherited costs into one pool per facility/product</td></tr>
-      </tbody>
-    </table>
+
+    <div class="why-not-box">
+      <h4>Why not build the dashboard straight off the operational tables?</h4>
+      <ul>
+        <li><strong>It's built for writes, not aggregation.</strong> OLTP schemas are normalized into many narrow tables to keep transactions fast and consistent - exactly the structure that makes cross-table analytical queries (margin by customer, by channel, by month) slow and expensive to run.</li>
+        <!-- <li><strong>Querying it risks the systems that depend on it.</strong> Heavy reporting queries competing for the same tables as live order processing is a reliability risk, not just a performance one.</li> -->
+        <li><strong>It only knows "now."</strong> Operational tables typically hold current state, not history - there's no clean way to see a trend over time unless that history is captured somewhere else, on a schedule.</li>
+        <li><strong>It isn't one story yet.</strong> Facility, customer, product, and cost data live in separate tables with separate keys - analyst still has to define how they join and what the resulting numbers mean before a dashboard can use them.</li>
+      </ul>
+    </div>
+
+    <p>
+      The fix is a separate <strong>OLAP</strong> layer: a model built
+      specifically for reporting, refreshed on a schedule, decoupled from the
+      live transactional system, and shaped so a dashboard tool can query it
+      directly and cheaply. Getting there is the ETL pipeline's job.
+    </p>
+
+    <div class="flow-diagram">
+      <div class="flow-stage">
+        <span class="stage-tag">Source</span>
+        <h4>OLTP tables</h4>
+        Facilities, customers, products, rate cards, orders, transfers, inventory
+      </div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-stage">
+        <span class="stage-tag">Staging</span>
+        <h4>1:1 landing</h4>
+        Renamed, typed, no business logic — a clean copy of the source
+      </div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-stage">
+        <span class="stage-tag">Intermediate</span>
+        <h4>Transform (SQL)</h4>
+        Cost pools built and allocated across facility / product / customer
+      </div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-stage">
+        <span class="stage-tag">Mart · OLAP</span>
+        <h4>fct_sales_pnl</h4>
+        One profitability record per sales order, dashboard-ready
+      </div>
+    </div>
+
+    <p>
+      The whole pipeline is written in SQL and orchestrated with dbt, so
+      every transformation is version-controlled, testable, and documented -
+      not a one-off script. Staging does no logic at all; intermediate models
+      are where the cost allocation actually happens (that logic is the
+      analytical core of the project, so I'm keeping it out of this write-up
+      for now); the mart is what Looker Studio reads from. What matters for
+      the dashboard layer is simply what comes out the other end - one row
+      per sales order, carrying:
+    </p>
+
+    <div class="metric-pill-row">
+      <span class="metric-pill">Sales Value</span>
+      <span class="metric-pill">COGS</span>
+      <span class="metric-pill">Transport Cost</span>
+      <span class="metric-pill">Handling Cost</span>
+      <span class="metric-pill">Storage + Overhead</span>
+      <!-- <span class="metric-pill">Inventory Carrying Cost</span> -->
+      <span class="metric-pill">SG&A</span>
+      <span class="metric-pill">Facility · Product · Customer · Channel keys</span>
+    </div>
+
+    <p>From those, the mart derives the profitability waterfall the dashboard reports on:</p>
     <div class="waterfall-box">
-      GM&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;= Sales Value − COGS<br>
-      CBM&nbsp;&nbsp;&nbsp;&nbsp;= GM − (Transport + Handling + Storage/Overhead)<br>
-      CBMAI&nbsp;&nbsp;= CBM − Inventory Carrying Cost<br>
+      GM&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;= Sales Value - COGS<br>
+      Profit&nbsp;&nbsp;&nbsp;&nbsp;= GM - (Transport + Handling + Storage + Overhead)<br>
       SG&A&nbsp;&nbsp;&nbsp;= 3.5% × Sales Value<br>
-      EBITAI&nbsp;= CBMAI − SG&A
+      EBIT&nbsp;= Profit − SG&A
     </div>
   </div>
 
-  <!-- ── 5. Preview & Tools ── -->
+  <!-- ── 3. Designing the Dashboard ── -->
+  <div class="architecture-section">
+    <h2 class="numbered-section">Designing the Dashboard</h2>
+    <p>
+      Having a clean, analytics-ready mart is only half the job - the other
+      half is deciding what each audience actually needs to see, and in what
+      form. For each of the three views, I started from the decision the
+      audience is making, then worked backward to the KPIs and chart types
+      that support it.
+    </p>
+
+    <div class="kpi-audience-grid">
+      <div class="kpi-audience-card">
+        <h4>Executive Summary</h4>
+        <p class="decision">Decision: is overall profitability healthy, and is it moving in the right direction?</p>
+        <ul>
+          <li>Headline KPIs: Sales Value, EBIT, EBIT Margin, Volume</li>
+          <li>Trend line for EBIT over time - surfaces direction, not just a snapshot</li>
+          <li>Margin by product category - flags where to look next</li>
+        </ul>
+      </div>
+      <div class="kpi-audience-card">
+        <h4>Network & Facility Performance</h4>
+        <p class="decision">Decision: where in the network is cost-to-serve out of line?</p>
+        <ul>
+          <li>Per-facility sales and EBIT margin, side by side</li>
+          <li>Cost breakdown by type (handling / storage / transport) - shows <em>why</em> a facility underperforms, not just that it does</li>
+          <li>Geographic view of sales value by customer, for network planning context</li>
+        </ul>
+      </div>
+      <div class="kpi-audience-card">
+        <h4>Customer & Channel Profitability</h4>
+        <p class="decision">Decision: which accounts or channels are worth the volume they demand?</p>
+        <ul>
+          <li>Account-level EBIT margin ranking</li>
+          <li>EBIT by channel</li>
+          <li>Sales-value-vs-margin scatter - deliberately chosen to flag high-volume, low-margin accounts in one view rather than two separate tables</li>
+        </ul>
+      </div>
+    </div>
+
+    <p>
+      The common thread across all three: every chart maps to a specific
+      question someone in that role would actually ask, and every number on
+      screen traces back to a single, tested definition in the mart - so a
+      finance controller and a network planner are always looking at the
+      same underlying truth, just sliced differently for their decision.
+    </p>
+  </div>
+
+  <!-- ── 4. Preview & Tools ── -->
   <div class="demo-section">
     <h2 class="numbered-section">Preview</h2>
-    <p class="demo-caption">Three views built on the same fct_sales_pnl mart — each answers a different stakeholder question.</p>
+    <p class="demo-caption">Three views built on the same fct_sales_pnl mart - each answers a different stakeholder question.</p>
 
     <div class="demo-frame">
       <img src="/assets/images/projects/scd_executive_summary.png" alt="Executive Summary view: Sales Value, EBITAI, EBITAI Margin, Sales Quantity KPIs with EBITAI over time and EBITAI by category charts"/>
     </div>
-    <p class="demo-frame-label">Executive Summary — headline KPIs, EBITAI trend, and margin by product category</p>
+    <p class="demo-frame-label">Executive Summary - headline KPIs, EBIT trend, and margin by product category</p>
 
     <div class="demo-thumbnails">
       <div class="demo-thumb-card">
         <img src="/assets/images/projects/scd_network_facility.png" alt="Network & Facility Performance view"/>
         <div class="thumb-label">Network & Facility Performance</div>
-        <div class="thumb-desc">Per-facility sales, EBITAI margin, and cost breakdown (handling/storage/transport), plus a geographic view of sales value by customer.</div>
+        <div class="thumb-desc">Per-facility sales, EBIT margin, and cost breakdown (handling/storage/transport), plus a geographic view of sales value by customer.</div>
       </div>
       <div class="demo-thumb-card">
         <img src="/assets/images/projects/scd_customer_dashboard.png" alt="Customer & Channel Profitability view"/>
         <div class="thumb-label">Customer & Channel Profitability</div>
-        <div class="thumb-desc">Account-level EBITAI margin, EBITAI by channel, and a sales-value-vs-margin scatter to flag high-volume, low-margin accounts.</div>
+        <div class="thumb-desc">Account-level EBIT margin, EBIT by channel, and a sales-value-vs-margin scatter to flag high-volume, low-margin accounts.</div>
       </div>
     </div>
 
@@ -249,7 +393,7 @@
     <span>
       <strong>Note on the data:</strong> all figures, insights, and dashboard
       values here are built on a synthetic dataset I created based on my own
-      understanding and experience working on projects for a dairy company —
+      understanding and experience working on projects for a dairy company -
       they do not reflect the real business results of any actual company.
       This project is for study and portfolio purposes only.
     </span>
