@@ -9,8 +9,8 @@ const LANG_LABELS = { en: 'EN', vi: 'VI', de: 'DE' };
 function getBlogLang(pathname) {
   if (pathname.startsWith('/blog/vi/')) return 'vi';
   if (pathname.startsWith('/blog/de/')) return 'de';
-  if (pathname.startsWith('/blog/') && 
-      !pathname.startsWith('/blog/vi/') && 
+  if (pathname.startsWith('/blog/') &&
+      !pathname.startsWith('/blog/vi/') &&
       !pathname.startsWith('/blog/de/')) return 'en';
   return null;
 }
@@ -24,6 +24,21 @@ function getEnPath(pathname) {
 function getLangPath(enPath, lang) {
   if (lang === 'en') return enPath;
   return enPath.replace('/blog/', `/blog/${lang}/`);
+}
+
+// --- Generic (non-blog) page language helpers ---
+function getPageLang(pathname) {
+  if (pathname.startsWith('/de/')) return 'de';
+  return 'en';
+}
+
+function getEnPagePath(pathname) {
+  return pathname.replace(/^\/de\//, '/');
+}
+
+function getPageLangPath(enPath, lang) {
+  if (lang === 'en') return enPath;
+  return `/de${enPath}`;
 }
 
 async function loadNav() {
@@ -40,52 +55,62 @@ async function loadNav() {
 
   // Blog language toggle
   const currentLang = getBlogLang(current);
-  if (!currentLang) return; // not a blog page
+  if (currentLang) {
+    const meta = document.querySelector('meta[name="translations"]');
+    const supportedLanguages = [currentLang];
+    if (meta && meta.content && meta.content !== 'none') {
+      meta.content.split(',').forEach(lang => supportedLanguages.push(lang.trim()));
+    }
 
-  // Read declared translations from the page's meta tag
-  const meta = document.querySelector('meta[name="translations"]');
-  
-  // Create an array of explicitly supported languages for this post
-  const supportedLanguages = [currentLang];
-  if (meta && meta.content && meta.content !== 'none') {
-    meta.content.split(',').forEach(lang => supportedLanguages.push(lang.trim()));
+    const enPath = getEnPath(current);
+    const blogToggle = document.getElementById('lang-blog');
+    document.getElementById('lang-default').style.display = 'none';
+    blogToggle.style.display = '';
+
+    const allLanguages = ['en', 'vi'];
+
+    blogToggle.innerHTML = allLanguages.map((lang, i) => {
+      const separator = i > 0 ? '<span class="lang-separator">/</span>' : '';
+
+      if (lang === currentLang) {
+        return `
+          ${separator}
+          <a href="${getLangPath(enPath, lang)}" class="active">
+            ${LANG_LABELS[lang]}
+          </a>
+        `;
+      }
+
+      if (supportedLanguages.includes(lang)) {
+        return `
+          ${separator}
+          <a href="${getLangPath(enPath, lang)}">
+            ${LANG_LABELS[lang]}
+          </a>
+        `;
+      }
+
+      return `
+        ${separator}
+        <span class="lang-disabled">${LANG_LABELS[lang]}</span>
+      `;
+    }).join('');
+
+    return; // blog page handled, skip the generic branch below
   }
 
-  const enPath = getEnPath(current);
-  const blogToggle = document.getElementById('lang-blog');
-  document.getElementById('lang-default').style.display = 'none';
-  blogToggle.style.display = '';
+  // Generic pages (Home, About, Projects, Resume) — EN/DE toggle
+  const pageLang = getPageLang(current);
+  const enPagePath = getEnPagePath(current);
+  const defaultToggle = document.getElementById('lang-default');
 
-  // Define both languages to always display the structure "EN / VI"
-  const allLanguages = ['en', 'vi'];
-
-  blogToggle.innerHTML = allLanguages.map((lang, i) => {
-    const separator = i > 0 ? '<span class="lang-separator">/</span>' : '';
-    
-    // Condition 1: It's the language the user is currently reading
-    if (lang === currentLang) {
-      return `
-        ${separator}
-        <a href="${getLangPath(enPath, lang)}" class="active">
-          ${LANG_LABELS[lang]}
-        </a>
-      `;
-    }
-    
-    // Condition 2: It's the other language, and it IS available/translated
-    if (supportedLanguages.includes(lang)) {
-      return `
-        ${separator}
-        <a href="${getLangPath(enPath, lang)}">
-          ${LANG_LABELS[lang]}
-        </a>
-      `;
-    }
-    
-    // Condition 3: It's the other language, but it has NO translation yet
+  defaultToggle.innerHTML = ['en', 'de'].map((lang, i) => {
+    const separator = i > 0 ? '<span>/</span>' : '';
+    const target = getPageLangPath(enPagePath, lang);
+    const isCurrent = lang === pageLang;
     return `
       ${separator}
-      <span class="lang-disabled">${LANG_LABELS[lang]}</span>
+      <a href="${target}"${isCurrent ? ' class="active"' : ''}>${LANG_LABELS[lang]}</a>
     `;
   }).join('');
 }
@@ -94,11 +119,9 @@ async function loadPostList(containerId, category) {
   const container = document.getElementById(containerId);
   if (!container) return;
 
-  // Detect language from URL: /blog/vi/... → 'vi', /blog/de/... → 'de', else default
   const langMatch = window.location.pathname.match(/^\/blog\/(vi|de)\//);
   const lang = langMatch ? langMatch[1] : null;
 
-  // Fetch the language-specific posts.json, fallback to default
   const jsonPath = lang ? `/blog/${lang}/posts.json` : '/blog/posts.json';
   const res = await fetch(jsonPath);
   const all = await res.json();
@@ -112,7 +135,6 @@ async function loadPostList(containerId, category) {
     return;
   }
 
-  // Prefix post links with the language path if needed
   const basePath = lang ? `/blog/${lang}` : '/blog';
 
   container.innerHTML = posts.map(post => `
