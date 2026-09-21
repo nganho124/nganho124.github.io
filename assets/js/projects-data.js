@@ -9,15 +9,16 @@ const projects = {
       image: "/assets/images/projects/scd_executive_summary.png"
     }
   ],
-  // "Data Science & ML": [
-  //   {
-  //     href: "#",
-  //     tag: "ML · Classification",
-  //     title: "Customer Churn Prediction",
-  //     desc: "End-to-end ML pipeline predicting churn with 87% accuracy...",
-  //     tools: ["Python", "scikit-learn", "SHAP"]
-  //   }
-  // ],
+  "LLM Chatbot Application": [
+    {
+      href: "/projects/ai-network-assistant",
+      tag: "LLM Chatbot",
+      title: "AI Network Assistant",
+      desc: "AI Chatbot to translate business requirements to model input",
+      tools: ["Python", "streamlit", "LLM API"],
+      image: "/assets/images/projects/ana_network_app.png"
+    }
+  ],
   // "Data Engineering": [
   //   {
   //     href: "#",

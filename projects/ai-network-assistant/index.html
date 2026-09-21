@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>AI Network Design Assitant</title>
+  <link rel="icon" type="image/x-icon" href="/assets/images/favicon.ico"/>
+  <link rel="stylesheet" href="/assets/css/style.css"/>
+  <style>
+    main.container { counter-reset: section-counter; }
+    h2.numbered-section::before {
+      counter-increment: section-counter;
+      content: counter(section-counter) ". ";
+    }
+
+    /* Code block — needed to show the tool definition / validation snippets. */
+    .code-block {
+      background: rgba(120,120,120,0.06);
+      border: 1px solid rgba(120,120,120,0.2);
+      border-radius: 8px;
+      padding: 1rem 1.2rem;
+      font-size: 0.82rem;
+      line-height: 1.55;
+      overflow-x: auto;
+      margin: 1rem 0 1.5rem;
+    }
+    .code-block pre { margin: 0; }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="/" class="nav-logo">Ngan Ho <sup>Portfolio</sup></a>
+  <ul class="nav-links">
+    <li><a href="/index.html">Home</a></li>
+    <li><a href="/about.html">About</a></li>
+    <li><a href="/projects/" class="active">Projects</a></li>
+    <li><a href="/resume.html">Resume</a></li>
+    <li><a href="/blog/">Blog</a></li>
+  </ul>
+  <div class="lang-toggle">
+    <a href="/" class="active">EN</a>
+    <span>/</span>
+    <a href="/de/">DE</a>
+  </div>
+</nav>
+
+<main class="container">
+
+  <!-- ── Hero ── -->
+  <div class="project-hero">
+    <p class="breadcrumb">
+      <a href="/projects/">Projects</a> &nbsp;/&nbsp; AI Network Design Assitant
+    </p>
+    <h1>AI Network Design Assitant</h1>
+    <p class="subtitle">
+      A prototype that compresses a 3-5 day supply chain network design process into a live conversation: 
+      describe a scenario in plain language, and an AI chatbot translates it into a structured adjustment that 
+      can be the input for supply chain optimization model - all inside one Streamlit dashboard, built in a single night with Claude Code.
+    </p>
+    <div class="cta-group">
+      <a href="https://github.com/nganho124/network_design_dashboard" target="_blank" class="btn btn-secondary">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0 1 12 6.844a9.59 9.59 0 0 1 2.504.337c1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.02 10.02 0 0 0 22 12.017C22 6.484 17.522 2 12 2z"/></svg>
+        View Github Repo
+      </a>
+    </div>
+  </div>
+
+  <!-- ── Context ── -->
+  <div class="project-description">
+    <h2 class="numbered-section">Context</h2>
+    <p>
+      On September 2nd, I joined the Claude Community Night in Nuremberg,
+      where builders got Claude Code credits and one night to build a
+      product from their own idea.
+    </p>
+    <p>
+      I brought an idea I'd been wanting to test, based on my previous work
+      in supply chain consulting: an AI chatbot to support data adjustment in
+      Network Design projects. In this type of project, we build a
+      replication model of the physical supply chain network, so a manager
+      can test new configurations - closing some warehouses, opening new
+      ones, or rerouting flows - and see the impact on the operation's KPIs
+      (cost, time-to-serve, and service level) before actually making the
+      decision and implementing it.
+    </p>
+  </div>
+
+  <!-- ── Process Adjustment ── -->
+  <div class="architecture-section">
+    <h2 class="numbered-section">Process Adjustment</h2>
+    <p>
+      The old workflow starts with receiving the request from the client.
+      Based on that request and our technical understanding of the model, we
+      - the consultants - create a list of adjustments we need to make to
+      the data and model. We then apply those adjustments to prepare the
+      data input, run the model, and load the output into an interactive
+      dashboard built with a Python package called Streamlit, where we can
+      compare scenario results, or go back and adjust the data input if
+      we find something looks unexpected.
+    </p>
+    <p>
+      The whole process before usually takes three to five days end-to-end and
+      involves at least two analysts. Here's what the new process design
+      looks like:
+    </p>
+
+    <div class="demo-frame">
+      <img src="/assets/images/projects/ana_process.png" alt="Before and after workflow comparison: manual translation across three tools, versus an AI chatbot integrated into the same Streamlit dashboard"/>
+    </div>
+    <p class="demo-frame-label">Before: manual translation across three separate tools. Now: the AI chatbot handles translation inside the same Streamlit dashboard.</p>
+
+    <p>
+      So instead of manually translating the client's request into a list of
+      tasks and adjustments, we let the AI chatbot handle that step. And
+      because everything is now integrated inside the same Streamlit
+      dashboard, we can trigger the whole flow from beginning to end with
+      much less human involvement.
+    </p>
+  </div>
+
+  <!-- ── Chatbot Implementation Design ── -->
+  <div class="project-description">
+    <h2 class="numbered-section">Chatbot Implementation Design</h2>
+    <p>
+      To make sure the AI chatbot's translation (I use Claude Sonnet-5 as the
+      LLM behind it, so I'll say "Claude" instead of "AI" from here on) is
+      correct, there are four main design questions this setup needs to
+      answer.
+    </p>
+
+    <h3>3.1 What can the user actually change?</h3>
+    <p>
+      To keep things manageable for the build night, I limited the chatbot
+      to three scenario types the user can interact with:
+    </p>
+    <ul>
+      <li>What happens to the network if we close a specific warehouse?</li>
+      <li>What happens if we open a new warehouse?</li>
+      <li>What happens if we reroute an area to a different warehouse - like not letting the Nuremberg warehouse serve Thuringia's stores anymore?</li>
+    </ul>
+    <p>
+      In a real project, the number of scenario types would vary depending
+      on the business requirement. So the first task is always defining the
+      requirements, before writing any code.
+    </p>
+
+    <h3>3.2 What does Claude need to know to create data input correctly?</h3>
+    <p>
+      This step is actually really important, because it takes business and modelling
+      knowledge to guide the chatbot so its output is correct. To do that, I
+      define a tool for each case. Here's the close-warehouse case as an
+      example (you can find the code in <code>chat_assistant.py</code> file):
+    </p>
+    <div class="code-block"><pre><code>UPDATE_SCENARIO_TOOL = {
+    "name": "update_scenario",
+    "description": (
+        "Apply a partial update to the network scenario — which warehouses are open "
+        "or closed. Only include warehouses whose status should actually change; omit "
+        "warehouses that stay as they are."
+    ),
+    "input_schema": {
+        "type": "object",
+        "properties": {
+            "wh_status": {
+                "type": "object",
+                "description": "Mapping of warehouse_id (e.g. 'WH001') -> 'open' or 'closed'.",
+                "additionalProperties": {"type": "string", "enum": ["open", "closed"]},
+            },
+        },
+        "required": ["wh_status"],
+    },
+}</code></pre></div>
+    <ul>
+      <li><code>"name": "update_scenario"</code> - the identifier, so Claude knows which tool it's calling.</li>
+      <li><code>"description"</code> - this is not just documentation for humans, it's part of the prompt Claude actually reads to decide when to use this tool and how. That's why it's written carefully: "only include warehouses whose status should actually change" is a direct instruction to Claude, preventing it from lazily dumping every warehouse's status into every call.</li>
+      <li><code>"input_schema"</code> - this is a JSON schema, a standard format for describing what valid data looks like. Here it must be an object called <code>wh_status</code>, where each key is a warehouse ID and each value is the string <code>"open"</code> or <code>"closed"</code>.</li>
+    </ul>
+    <p>
+      At runtime, this definition gets sent to the API alongside the user's
+      message (<code>tools=…</code> in <code>interpret_message()</code>). If
+      Claude decides "the user wants to close WH004," it returns a
+      <code>tool_use</code> block like this:
+    </p>
+    <div class="code-block"><pre><code>{"type": "tool_use", "name": "update_scenario", "input": {"wh_status": {"WH004": "closed"}}}</code></pre></div>
+
+    <h3>3.3 What should the LLM NOT have to deal with?</h3>
+    <p>
+      For a scenario where stores served by Warehouse A should now be served
+      by Warehouse B, I don't ask Claude to list every store ID in its
+      response - that's a waste of tokens, and it increases the chance
+      Claude gets an ID wrong. Instead, Claude only needs to know which
+      warehouse served the stores before, and which warehouse should serve
+      them now.
+    </p>
+    <p>
+      So Claude translates "move Berlin's stores to Hamburg" into just
+      <code>berlin_id</code> and <code>hamburg_id</code>, and a function,
+      <code>_stores_for_warehouse()</code>, maps that adjustment onto the
+      actual list of stores that need their routing changed.
+    </p>
+    <p>
+      This setup follows one principle: whenever a tool's parameters
+      require something your database already knows, don't
+      ask the LLM - resolve it in code after the tool call.
+    </p>
+
+    <h3>3.4 What if the LLM's response is subtly wrong or malicious?</h3>
+    <p>
+      In the case of updating a warehouse's status, even with the schema
+      already in place, it doesn't fully guarantee correctness - it only
+      guarantees the shape of the output. Claude can still hallucinate a
+      value like <code>{"WH999": "open"}</code> for an ID that doesn't
+      actually exist. So every response needs a check after it comes back:
+    </p>
+    <div class="code-block"><pre><code>wh_status_patch.update({wh: status for wh, status in raw_status.items()
+                        if wh in valid_wh_ids and status in ("open", "closed")})</code></pre></div>
+  </div>
+
+  <!-- ── Lesson Learned ── -->
+  <div class="project-description">
+    <h2 class="numbered-section">Lesson Learned</h2>
+    <p>
+        So, after doing the first project ever that include AI Chatbot inside the process,
+        here is some main lessons that I learned:
+    </p>
+    <ul>
+      <li><b>Start with the high-level picture first:</b> decide which step in the process actually benefits from AI, because not every step needs it. 
+        Some steps - like preparing data input and running the model - only need to be automated with Python code.</li>
+      <li><b>Business understanding is very important</b>, because it's what lets you guide the AI on what it should do in each case 
+        (through the tool definitions in this project).</li>
+      <li><b>Never trust AI 100%.</b> 
+        You still need code to validate its output - like not letting Claude introduce a new warehouse ID when it should only be updating an existing one's status - 
+        and to check if the data adjustment was actually applied correctly.</li>
+      <li><b>Stay open to extending the AI's usage and scalability.</b> 
+        Right now there are only three scenario types, but there's a lot more to explore - like consolidating import flows into certain warehouses before doing an internal transfer to the other warehouses, to save on import cost.</li>
+    </ul>
+    <p>
+    You also can see the short video demo for my tool here:
+  </p>
+  <iframe width="720" height="400" src="https://youtu.be/lOw8y3TnRE0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+  <p>
+    Also, small flexing that I also got the 2nd highest number of votes for that night!!! 
+    So happy with that experience. 🎢
+  </p>  
+  <div class="demo-frame">
+    <img src="/assets/images/projects/ana_build_night_ranking.jpg"/>
+  </div>
+</div>
+  
+</main>
+
+<div id="footer-placeholder"></div>
+
+<script src="/assets/js/main.js"></script>
+<script src="/assets/js/components.js"></script>
+</body>
+</html>

@@ -28,10 +28,16 @@ function scrollProjects(direction) {
 }
 
 const section = document.getElementById("projects-section");
+const toc = document.getElementById("projects-toc");
+
+function slugify(str) {
+  return str.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
+}
 
 Object.entries(projects).forEach(([category, items], i) => {
   const marginTop = i === 0 ? "" : "style='margin-top:4rem'";
-  
+  const slug = slugify(category);
+
   const cards = items.map(p => `
     <a href="${p.href}" class="project-card">
       <div class="project-card-image">
@@ -49,7 +55,30 @@ Object.entries(projects).forEach(([category, items], i) => {
   `).join("");
 
   section.innerHTML += `
-    <p class="section-label" ${marginTop} style="margin-bottom:1.5rem">${category}</p>
-    <div class="projects-grid">${cards}</div>
+    <div class="project-category" id="${slug}">
+      <p class="section-label" ${marginTop} style="margin-bottom:1.5rem">${category}</p>
+      <div class="projects-grid">${cards}</div>
+    </div>
   `;
+
+  if (toc) {
+    toc.innerHTML += `<a href="#${slug}" data-target="${slug}">${category}</a>`;
+  }
 });
+
+// Scroll-spy: highlight whichever category is in view
+if (toc) {
+  const categoryEls = document.querySelectorAll('.project-category');
+  const tocLinks = toc.querySelectorAll('a');
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        tocLinks.forEach(link => link.classList.remove('active'));
+        toc.querySelector(`a[data-target="${entry.target.id}"]`)?.classList.add('active');
+      }
+    });
+  }, { rootMargin: '-20% 0px -70% 0px' });
+
+  categoryEls.forEach(el => observer.observe(el));
+}
